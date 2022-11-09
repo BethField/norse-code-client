@@ -1,0 +1,12 @@
+a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.87)
+}
+
+a:hover {
+    color: rgba(255,255,255,0.37);
+}
+
+.navBox {
+    margin-left: 30px;
+}
