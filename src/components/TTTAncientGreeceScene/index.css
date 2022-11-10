@@ -1,0 +1,37 @@
+.header-color {
+    color: red;
+}
+
+.scene-container {
+    /* color: red; */
+    aspect-ratio: inherit;
+    width: 1500px;
+    height: 750px;
+    background: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #CE6A85;
+    border-radius: 10px;
+    /* display: flex;
+    flex-direction: column;
+    border-radius: 10px; */
+    /* background-color: rgba(103, 128, 159, 0.6) */
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.scene-item-0, .scene-item-1 {
+    width: 50px;
+    height: 50px;
+}
+
+/* .scene-item-0 {
+    top: 5px
+}
+
+.scene-item-1 {
+    left: 10%;
+} */
