@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<PageWrapper />}>
+          <Route index element={<Home />}/>
           <Route path="/games/timeline" element={<TimelinePage />} />
         </Route>
       </Routes>
