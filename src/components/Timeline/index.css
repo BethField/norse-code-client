@@ -1,4 +1,5 @@
 .timeline {
+  position: absolute;
   width: 100%;
   height: 10px;
   background-color: #da5c5c;
