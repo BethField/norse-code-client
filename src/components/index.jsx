@@ -5,3 +5,8 @@ export { default as SubjectList } from "./SubjectList/SubjectList.jsx"
 export { default as BrowseGamesPage } from "../pages/BrowseGamesPage"
 export { default as SubjectCard } from "./SubjectCard/SubjectCard.jsx"
 export { default as GamesList } from "./GamesList/GamesList.jsx"
+export { default as Timeline } from "./Timeline";
+export { default as TimelineCard } from "./TimelineCard";
+export { default as LandingMainBox} from './LandingMainBox'
+export { default as Item } from './Item'
+export { default as LandingCarouselBox } from './LandingCarouselBox'

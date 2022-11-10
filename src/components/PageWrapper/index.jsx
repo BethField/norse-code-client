@@ -9,7 +9,6 @@ const PageWrapper = () => {
                 <AppBar></AppBar>
             </header>
             <Outlet></Outlet>
-            <footer>Norse Code 2022</footer>
         </>
     )
 };

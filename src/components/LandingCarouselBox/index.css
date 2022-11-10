@@ -1,0 +1,20 @@
+.carouselContainer {
+    display: flex;
+    background-color: transparent;
+    white-space: nowrap;
+    /* box-shadow: inset 0px 0px 5px rgba(0,0,0,0.9); */
+    /* box-shadow: inset 10px 10px 108px 19px rgba(0,0,0,0.82); */
+}
+  
+  .wrapper1, .wrapper2 {
+    display: flex;
+    animation: slide 50s linear infinite;
+  }
+  
+  @keyframes slide {
+    0% { transform: translate3d(0%,0,0); }
+    100% {
+      transform: translate3d(-50%,0,0);
+    }
+  }
+  
