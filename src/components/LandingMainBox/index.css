@@ -1,0 +1,25 @@
+#landingImgContainer{
+    position: relative;
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.landingRuinsImg {
+    position: absolute;
+    left: 50px;
+    z-index: 3;
+}
+
+.landingYardImg {
+    position: absolute;
+    left: 210px;
+    top: 140px;
+    z-index: 2;
+}
+
+.landingTMImg {
+    position: absolute;
+    top: 200px;
+    left: 70px;
+    z-index: 1;
+}
