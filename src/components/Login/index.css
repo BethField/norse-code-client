@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    background-color: #2C373F;
+    align-items: center;
+    justify-content: center; 
+}
+
+.login-form {
+    background-color: #F9C74F;
+    
+}
