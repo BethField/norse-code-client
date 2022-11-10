@@ -70,7 +70,7 @@ export default function SearchAppBar() {
             >
                 NORSE::CODE
                 <Box className='navBox'>
-                    <NavLink>
+                    <NavLink to="/games">
                         GAMES
                     </NavLink>
                 </Box>
