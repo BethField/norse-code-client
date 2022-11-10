@@ -26,27 +26,8 @@ export default function LandingCarouselBox(){
                         <Item></Item>
                         <Item></Item>
                         <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
                     </div>
                     <div className='wrapper2'>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
-                        <Item></Item>
                         <Item></Item>
                         <Item></Item>
                         <Item></Item>
