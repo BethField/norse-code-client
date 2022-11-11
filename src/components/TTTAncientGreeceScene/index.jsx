@@ -41,76 +41,77 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     }
 
     // multiple draggables
-  const draggables = ['card-1'];
+    const draggables = ['card-1'];
 
-  // define an order
-  const order = {
-    0: "2",
-  }
-
-  const createInitialStates = (type) => {
-    const len = draggables.length;
-    const initialStates = {}
-    for (let i = 0; i < len; i++) {
-      type == "draggable" ? initialStates[i] = null : initialStates[i] = false;
+    // define an order
+    const order = {
+      0: "2",
     }
 
-    return initialStates
-  }
-
-  const draggableInitialStates = createInitialStates("draggable");
-  const droppableInitialStates = createInitialStates("droppable");
-
-  // objects states
-  const [parents, setParents] = useState(draggableInitialStates);
-  const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
-
-  const checkDragInDrop = (dAreaId) => {
-    // get keys
-    const entries = Object.entries(parents);
-    const newEntries = entries.map(entry => {
-
-      if (dAreaId == entry[1]) {
-        return <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem>
-      } else {
-        return null;
+    const createInitialStates = (type) => {
+      const len = draggables.length;
+      const initialStates = {}
+      for (let i = 0; i < len; i++) {
+        type == "draggable" ? initialStates[i] = null : initialStates[i] = false;
       }
-    });
 
-    return newEntries;
-  }
+      return initialStates
+    }
 
-  const checkInitialState = () => {
-    const entries = Object.entries(parents);
-    return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem> : null)
-  }
+    const draggableInitialStates = createInitialStates("draggable");
+    const droppableInitialStates = createInitialStates("droppable");
 
-  const checkCorrectness = () => {
-    const strOrder = JSON.stringify(order);
-    const strParents = JSON.stringify(parents);
+    // objects states
+    const [parents, setParents] = useState(draggableInitialStates);
+    const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
+    const [changedClothes, setChangedClothes] = useState(null)
 
-    strOrder === strParents ? console.log("correct order") : console.log("incorrect order");
-  }
+    const checkDragInDrop = (dAreaId) => {
+      // get keys
+      const entries = Object.entries(parents);
+      const newEntries = entries.map(entry => {
 
-  return (
-    <DndContext onDragEnd={handleDragEnd}>
-        <div className="scene-container" style={{
-                backgroundImage: 'url("/TTTAncientGreece/temple.png")',
-                position: 'relative'
-            }}>
-            {checkInitialState()}
-            {Object.keys(objectContainerStates).map((id) => (
-                // we updated the droppable component so it would accept an 'id'
-                // prop and pass it to useDroppable
-                <Droppable key={id} id={id}>
-                    {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
-                    {checkDragInDrop(id)}
-                </Droppable>
-            ))}
-            <button onClick={checkCorrectness}>Check Correctness</button>
-        </div>
-    </DndContext>
-  );
+        if (dAreaId == entry[1]) {
+          return <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem>
+        } else {
+          return null;
+        }
+      });
+
+      return newEntries;
+    }
+
+    const checkInitialState = () => {
+      const entries = Object.entries(parents);
+      return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem> : null)
+    }
+
+    const checkCorrectness = () => {
+      const strOrder = JSON.stringify(order);
+      const strParents = JSON.stringify(parents);
+
+      strOrder === strParents ? console.log("correct order") : console.log("incorrect order");
+    }
+
+    return (
+      <DndContext onDragEnd={handleDragEnd}>
+          <div className="scene-container" style={{
+                  backgroundImage: 'url("/TTTAncientGreece/temple.png")',
+                  position: 'relative'
+              }}>
+              {checkInitialState()}
+              {Object.keys(objectContainerStates).map((id) => (
+                  // we updated the droppable component so it would accept an 'id'
+                  // prop and pass it to useDroppable
+                  <Droppable key={id} id={id} clothing={changedClothes}>
+                      {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
+                      {checkDragInDrop(id)}
+                  </Droppable>
+              ))}
+              <button onClick={checkCorrectness}>Check Correctness</button>
+          </div>
+      </DndContext>
+    );
 
   function handleDragEnd(event) {
     const {over, active} = event;
@@ -142,7 +143,12 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         ...prevState,
         [active.id]: null
       }));
+
+      
     }
+    
+
+
     }
     //console.log(sceneData.backgroundImgUrl);
 

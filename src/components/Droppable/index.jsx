@@ -11,7 +11,7 @@ export default function Droppable(props) {
     height: 400,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    backgroundImage: 'url("/public/TTTAncientGreece/tim.png")'
+    backgroundImage: (isOver ? 'url("/TTTAncientGreece/timSelected.png")' : 'url("/TTTAncientGreece/tim.png")')
   };
   
   
