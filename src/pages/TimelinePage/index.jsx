@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Timeline, TimelineCard, TimelineHeader } from "../../components";
-import { DndContext } from "@dnd-kit/core";
 
 import "./index.css";
 
