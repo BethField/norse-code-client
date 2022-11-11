@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Timeline, TimelineCard, TimelineHeader } from "../../components";
-import Button from "@mui/material/Button";
+import { DndContext } from "@dnd-kit/core";
 
 import "./index.css";
 
@@ -41,15 +41,17 @@ const TimelinePage = () => {
   }
 
   return (
-    <main className="timeline-page">
-      <TimelineHeader />
-      <div className="timeline-container">
-        <Timeline dots={dots} setDots={setDots} />
-      </div>
-      <div className="card-container">
-        <div className="card-scroll-box">{displayCards()}</div>
-      </div>
-    </main>
+    <DndContext>
+      <main className="timeline-page">
+        <TimelineHeader />
+        <div className="timeline-container">
+          <Timeline dots={dots} setDots={setDots} />
+        </div>
+        <div className="card-container">
+          <div className="card-scroll-box">{displayCards()}</div>
+        </div>
+      </main>
+    </DndContext>
   );
 };
 
