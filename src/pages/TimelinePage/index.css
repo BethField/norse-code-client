@@ -10,6 +10,15 @@
   background-color: #0e1c26;
 }
 
+.game-header {
+  position: absolute;
+  margin-top: 5px;
+  width: 90%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .timeline-container {
   width: 100%;
   height: 230px;

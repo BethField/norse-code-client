@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import { Timeline, TimelineCard } from "../../components";
+import { Timeline, TimelineCard, TimelineHeader } from "../../components";
+import Button from "@mui/material/Button";
 
 import "./index.css";
 
@@ -36,9 +36,7 @@ const TimelinePage = () => {
 
   return (
     <main className="timeline-page">
-      <Typography sx={{ position: "absolute", color: "white", marginTop: "5px" }}>
-        Place the cards in the correct order on the timeline
-      </Typography>
+      <TimelineHeader />
       <div className="timeline-container">
         <Timeline dots={dots} setDots={setDots} />
       </div>

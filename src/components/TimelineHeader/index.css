@@ -1,0 +1,12 @@
+.header-container {
+  position: absolute;
+  margin-top: 5px;
+  width: 90%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-buttons {
+  margin-left: 100px;
+}
