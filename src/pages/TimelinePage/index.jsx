@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Timeline, TimelineCard, TimelineHeader } from "../../components";
-import Button from "@mui/material/Button";
 
 import "./index.css";
 
