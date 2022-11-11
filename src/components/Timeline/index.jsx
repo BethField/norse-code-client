@@ -3,7 +3,6 @@ import "./index.css";
 
 const Timeline = ({ dots }) => {
   function displayDots() {
-    console.log(dots);
     return dots.map((dot) => <div className="dot" key={dot} id={dot}></div>);
   }
 

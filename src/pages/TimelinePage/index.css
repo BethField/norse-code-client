@@ -1,13 +1,28 @@
-.timeline-main {
+* {
+  box-sizing: border-box;
+}
+
+.timeline-page {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-container {
   width: 200%;
-  height: 100vh;
+  height: 100px;
+  position: absolute;
   display: flex;
   align-items: center;
 }
 
 .card-container {
-  width: 100%;
-  height: 100vh;
+  width: 100em;
+  height: 40%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
 }

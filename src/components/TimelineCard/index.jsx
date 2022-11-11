@@ -7,24 +7,21 @@ import "./index.css";
 
 const TimelineCard = ({ id, order, imgPath, date, description }) => {
   return (
-    <Card className="card" id={id} order={order} date={date} description={description}>
-      <CardMedia
-        component="img"
-        height="194"
-        image="../../assets/placeholder.png"
-        alt="placeholder"
-      />
+    <Card
+      sx={{ maxWidth: 170, maxHeight: 200 }}
+      id={id}
+      order={order}
+      date={date}
+      description={description}
+    >
+      <CardMedia component="img" height="90" image={imgPath} alt="placeholder" />
       <CardContent>
-        <Typography>{description}</Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
       </CardContent>
     </Card>
   );
 };
 
 export default TimelineCard;
-
-// .card {
-//   width: 150px;
-//   height: 200px;
-//   background-color: aliceblue;
-// }
