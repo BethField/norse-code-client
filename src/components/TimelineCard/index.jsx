@@ -8,7 +8,7 @@ import "./index.css";
 const TimelineCard = ({ id, order, imgPath, date, description }) => {
   return (
     <Card
-      sx={{ maxWidth: 170, maxHeight: 200 }}
+      sx={{ width: 190, height: 210 }}
       id={id}
       order={order}
       date={date}
@@ -16,7 +16,7 @@ const TimelineCard = ({ id, order, imgPath, date, description }) => {
     >
       <CardMedia component="img" height="90" image={imgPath} alt="placeholder" />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography sx={{ fontSize: "0.7rem" }} color="text.secondary">
           {description}
         </Typography>
       </CardContent>
