@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Timeline, TimelineCard } from "../../components";
+import { Timeline, TimelineCard, TimelineHeader } from "../../components";
+import Button from "@mui/material/Button";
 
 import "./index.css";
 
@@ -15,7 +16,13 @@ const TimelinePage = () => {
       const response = await fetch(`http://localhost:5432/games/timeline/${id}`);
       const gameData = await response.json();
       const cardData = gameData.cards;
-      setCards(cardData);
+
+      const shuffledCards = cardData
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+
+      setCards(shuffledCards);
     }
     loadGame();
   }, []);
@@ -35,10 +42,13 @@ const TimelinePage = () => {
 
   return (
     <main className="timeline-page">
+      <TimelineHeader />
       <div className="timeline-container">
         <Timeline dots={dots} setDots={setDots} />
       </div>
-      <div className="card-container">{displayCards()}</div>
+      <div className="card-container">
+        <div className="card-scroll-box">{displayCards()}</div>
+      </div>
     </main>
   );
 };
