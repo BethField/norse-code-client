@@ -9,16 +9,13 @@ const TimelinePage = () => {
   const [dots, setDots] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     async function loadGame() {
       const response = await fetch(`http://localhost:5432/games/timeline/${id}`);
       const gameData = await response.json();
-      console.log("game data", gameData);
       const cardData = gameData.cards;
       setCards(cardData);
-      console.log("cards", cards);
     }
     loadGame();
   }, []);
@@ -37,9 +34,11 @@ const TimelinePage = () => {
   }
 
   return (
-    <main className="timeline-main">
-      <Timeline dots={dots} setDots={setDots} />
-      {displayCards()}
+    <main className="timeline-page">
+      <div className="timeline-container">
+        <Timeline dots={dots} setDots={setDots} />
+      </div>
+      <div className="card-container">{displayCards()}</div>
     </main>
   );
 };
