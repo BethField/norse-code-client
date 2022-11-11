@@ -9,9 +9,6 @@ import "./index.css";
 const TimelineHeader = () => {
   return (
     <div className="header-container">
-      <Typography sx={{ color: "white" }}>
-        Place the cards in the correct order on the timeline
-      </Typography>
       <div className="top-buttons">
         <Button>
           <QuestionMarkIcon></QuestionMarkIcon>
@@ -23,6 +20,10 @@ const TimelineHeader = () => {
           <HighlightOffIcon></HighlightOffIcon>
         </Button>
       </div>
+      <Typography sx={{ color: "white" }}>
+        Place the cards in the correct order on the timeline
+      </Typography>
+      <Button>Check Answer</Button>
     </div>
   );
 };

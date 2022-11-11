@@ -16,7 +16,13 @@ const TimelinePage = () => {
       const response = await fetch(`http://localhost:5432/games/timeline/${id}`);
       const gameData = await response.json();
       const cardData = gameData.cards;
-      setCards(cardData);
+
+      const shuffledCards = cardData
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+
+      setCards(shuffledCards);
     }
     loadGame();
   }, []);
