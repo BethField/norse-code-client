@@ -1,7 +1,7 @@
 import { AppBar } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { PageWrapper } from "./components";
-import { TimelinePage, Home, BrowseGamesPage, Login } from "./pages";
+import { TimelinePage, Home, BrowseGamesPage, Login, Register } from "./pages";
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/games" element={<BrowseGamesPage />} />
           <Route path="/games/timeline/:id" element={<TimelinePage />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login /> }/>
+          <Route path="register" element={<Register /> }/>
         </Route>
       </Routes>
     </div>

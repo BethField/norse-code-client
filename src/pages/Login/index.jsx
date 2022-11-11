@@ -1,13 +1,32 @@
-import React, { cloneElement } from 'react';
-import { Box, Button, Card, CardContent, Typography, TextField } from '@mui/material';
+import React from 'react';
+import { Box, Button, Card, CardContent, Typography, TextField, InputAdornment, Avatar, Stack } from '@mui/material';
 import "../../theme";
-import InputAdornment from '@mui/material/InputAdornment';
 import PersonIcon from '@mui/icons-material/Person';
 import "./index.css";
 import LockIcon from '@mui/icons-material/Lock';
 
 const Login = () => {
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        const login = {username: data.get('username'), password: data.get('password')};
+
+        const options = {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(login)
+        }        
+    }
+
     return (
+        <>
+               
+
         <div className='container'>
             <Box 
                 display="flex"
@@ -21,18 +40,20 @@ const Login = () => {
                 
             sx={{ 
                 margin: 15,
-                minWidth: 500,
+                minWidth: 350,
                 height: 350,
                 backgroundColor: '#F9C74F',
                 borderBottomRightRadius: 100,
                 borderBottomLeftRadius: 100,
                 borderTopRightRadius: 50,
-                borderTopLeftRadius: 50
+                borderTopLeftRadius: 50,
+                overflow: 'visible'
              }}
              >
                 <CardContent sx={{display: 'flex', flexDirection: 'column'}}>
-                    <Typography sx={{ fontSize: 30, textAlign: 'center'}}>
-                        Login
+                    <Avatar sx={{ width:50, height: 50, objectFit: 'contain', display: 'inline-block', verticalAlign: 'bottom', paddingRight: 5}} alt="key" src="../src/assets/iconsLogSign/key.png" />
+                    <Typography sx={{ fontSize: 30, textAlign: 'center', display: 'inline-block'}}>
+                        SIGN IN
                     </Typography>
                     <TextField 
                         sx={{backgroundColor: "#FFFFFF"}}
@@ -71,8 +92,18 @@ const Login = () => {
                     />
                     
                     <Button 
+                        type="submit"
                         sx={{
-                        width: 200, margin: "auto auto", borderRadius: 3, backgroundColor: "#F8E3B2"}}
+                        width: 200, 
+                        margin: "auto auto", 
+                        borderRadius: 3, 
+                        backgroundColor: "#F8E3B2", 
+                        position: 'relative', 
+                        bottom: -48, 
+                        padding: 1.5, 
+                        color: '#1E1E1E', 
+                        fontSize: 15
+                        }}
                         variant="contained"
                     >
                         SIGN IN
@@ -82,6 +113,8 @@ const Login = () => {
           </Box>
             
         </div>
+        </>
+        
         
     )
 }
