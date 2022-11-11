@@ -40,17 +40,15 @@ const TimelinePage = () => {
   }
 
   return (
-    <DndContext>
-      <main className="timeline-page">
-        <TimelineHeader />
-        <div className="timeline-container">
-          <Timeline dots={dots} setDots={setDots} />
-        </div>
-        <div className="card-container">
-          <div className="card-scroll-box">{displayCards()}</div>
-        </div>
-      </main>
-    </DndContext>
+    <main className="timeline-page">
+      <TimelineHeader />
+      <div className="timeline-container">
+        <Timeline dots={dots} setDots={setDots} />
+      </div>
+      <div className="card-container">
+        <div className="card-scroll-box">{displayCards()}</div>
+      </div>
+    </main>
   );
 };
 
