@@ -1,0 +1,22 @@
+.gameCard {
+    transition: height 0.8s ease;
+}
+  
+.cardImage {
+    transition: height 0.8s ease;
+    height: 180px;
+}
+
+.cardBox {
+transition: height 0.8s ease;
+    padding: 10px;
+    height: 30px;
+}
+
+.gameCard:hover .cardImage {
+    height: 100px;
+}
+
+.gameCard:hover .cardBox {
+    height: 110px;
+}

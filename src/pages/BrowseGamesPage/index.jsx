@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FilterBar, SubjectList } from "../../components"
+import { FilterBar, GamesList } from "../../components"
 import { Box, Container, Stack } from "@mui/material"
 
 function BrowseGamesPage() {
@@ -22,7 +22,7 @@ function BrowseGamesPage() {
           setGeographyOnly={setGeographyOnly} setPhilosophyOnly={setPhilosophyOnly} setArtHistoryOnly={setArtHistoryOnly} levelKS1={levelKS1} setLevelKS1={setLevelKS1}
           levelKS2={levelKS2} setLevelKS2={setLevelKS2}
         />
-        <SubjectList historyOnly={historyOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly} levelKS1={levelKS1} levelKS2={levelKS2}/>
+        <GamesList historyOnly={historyOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly} levelKS1={levelKS1} levelKS2={levelKS2}/>
 
       </Stack>
     </Box>
