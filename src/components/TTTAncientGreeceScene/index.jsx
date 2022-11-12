@@ -37,6 +37,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const items = sceneData.items
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
+
+    console.log(requiredItems)
     
     // const [inventory, setCurrentInventory] = useState([]);
     // const [eligible, setEligible] = useState(false);
@@ -74,7 +76,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     // multiple draggables
     // Second item in subarray determines if it's to be rendered or not
-    const draggables = [[items[0].name, true], [items[1], true]];
+    const draggables = [[items[0].name, true], [items[1].name, true]];
     const [dragItems, setDragItems] = useState(draggables)
 
     // // define an order
@@ -90,9 +92,10 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         }
       })
 
+      //set initial states with name ids
       const initialStates = {}
       for (let i = 0; i < amountOfDraggables; i++) {
-        initialStates[i] = null
+        initialStates[dragItems[i][0]] = null
       }
 
       return initialStates
@@ -181,7 +184,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       }));
     }
 
-    if (over && !objectContainerStates[over.id]) {
+    if (over && !objectContainerStates[over.id] && requiredItems.includes(event.active.id)) {
+      console.log("Active id: ", event.active.id)
+      console.log("Good placement!")
       // change the container filled status to true
       setObjectContainerStates(prevState => ({
         ...prevState,
@@ -201,7 +206,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         // setDragItems([...draggables])
         // console.log(dragItems)
       } else {
-
+        console.log("Cannot place that there!")
         // turn the parent to null (render the draggable item outside)
         setParents (prevState => ({
           ...prevState,
