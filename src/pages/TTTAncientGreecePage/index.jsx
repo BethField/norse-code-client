@@ -8,7 +8,7 @@ export default function TTTAncientGreecePage(){
       scenes: [
         {
           // scene 1
-          backgroundImage: "/TTTAncientGreece/temple.jpg",
+          backgroundImage: "/TTTAncientGreece/temple.png",
           items: [{
             name: "robe",
             unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",

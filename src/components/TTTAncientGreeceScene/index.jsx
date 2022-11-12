@@ -22,6 +22,14 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       dialogue is an array of dialogue options
     
     currentScene stores an index of the current scene, setCurrentScene sets the index of (used to get another scene)
+
+    NOTES: TTTItem component should be flexible to accommodate all items, 
+      Droppable (TTTDroppable in the future?) is possible to be flexible to accommodate all drop areas...
+        ...(unselected image, selected, and the image that is changed into once selected)
+      Different droppable might depend on if it's a character or not i.e. if the item can be taken off of droppable or not
+      ...(an example of the former is tim going from school clothes to greek clothes and cannot go back)
+      ...(maybe there is puzzle to rearrange items (since we are working on this with timeline STRETCH GOAL))
+
     */
    
     /* GRABBING SCENE DATA */
@@ -64,6 +72,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     //     setEligible(true)
     //     }
     // }
+
+    /* DRAG AND DROP LOGIC */
 
     // multiple draggables
     const draggables = [[items[0].name, true]];
@@ -112,6 +122,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       return newEntries;
     }
 
+    // NOTE: ITEM IS HARDCODED ATM
     const checkInitialState = () => {
       const entries = Object.entries(parents);
       return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem> : null)
@@ -127,13 +138,14 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     return (
       <DndContext onDragEnd={handleDragEnd}>
           <div className="scene-container" style={{
-                  backgroundImage: 'url("/TTTAncientGreece/temple.png")',
+                  backgroundImage: `url(${backgroundImage})`,
                   position: 'relative'
               }}>
               {checkInitialState()}
               {Object.keys(objectContainerStates).map((id) => (
                   // we updated the droppable component so it would accept an 'id'
                   // prop and pass it to useDroppable
+                  //NOTE: HARD CODED CHARACTER DROPPABLE (need to change to we have selected, unselected and changed images)
                   <Droppable key={id} id={id} changedClothes={changedClothes} schoolTim={sceneData.schoolTim} schoolTimHovered={sceneData.hoveredSchoolTim} greekTim={sceneData.greekTim}>
                       {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
                       {checkDragInDrop(id)}
@@ -143,7 +155,12 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
           </div>
       </DndContext>
     );
-
+  
+  /* 
+  HANDLE DRAG LOGIC
+  Commented out code allows item to be shown within droppable area and return back to original space once dropped out of original area
+  BE CAREFUL IF DELETING COMMENTED CODE
+  */
   function handleDragEnd(event) {
     const {over, active} = event;
 
@@ -196,6 +213,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
             
     //     {/* <TTTInfoBox></TTTInfoBox>
     //     <TTTDialogueBox></TTTDialogueBox> */}
+
+    /* OLD SCENE LOGIC BEFORE DRAG AND DROP STILL TO BE REVIEWED!!!!! */
+
     //     {/* {sceneData.sceneItems.map((si, i) => <button 
     //                                                 className={`scene-item-${i}`} 
     //                                                 onClick={() => {updateInventory(si)}}>{si}</button>)}
