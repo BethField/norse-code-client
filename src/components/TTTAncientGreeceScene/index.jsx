@@ -38,7 +38,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
 
-    console.log(requiredItems)
+    console.log(items)
     
     // const [inventory, setCurrentInventory] = useState([]);
     // const [eligible, setEligible] = useState(false);
@@ -118,14 +118,16 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const [parents, setParents] = useState(draggableInitialStates);
     const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
     const [changedClothes, setChangedClothes] = useState(null)
+    //Important so we can keep track of what's being deleted
+    const [itemsState, setItemsState] = useState(items)
 
     const checkDragInDrop = (dAreaId) => {
       // get keys
       const entries = Object.entries(parents);
-      const newEntries = entries.map(entry => {
+      const newEntries = entries.map((entry, index) => {
         if (dAreaId == entry[1]) {
           
-          return <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem>
+          return <TTTItem id={entry[0]} key={entry[0]} item={itemsState[index]}></TTTItem>
         } else {
           return null;
         }
@@ -137,7 +139,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     // NOTE: ITEM IS HARDCODED ATM
     const checkInitialState = () => {
       const entries = Object.entries(parents);
-      return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem> : null)
+      return entries.map((entry, index) => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]} item={itemsState[index]}></TTTItem> : null)
     }
 
     const checkCorrectness = () => {

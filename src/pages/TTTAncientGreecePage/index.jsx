@@ -17,11 +17,11 @@ export default function TTTAncientGreecePage(){
             info: "A greek robe"
           },
           {
-            name: "robe-2",
-            unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",
-            hoveredImage: "/TTTAncientGreece/Items/greekClothingSelected.png",
-            required: true,
-            info: "A greek robe"
+            name: "normalClothes",
+            unHoveredImage: "/TTTAncientGreece/Items/normalClothes.png",
+            hoveredImage: "/TTTAncientGreece/Items/normalClothesSelected.png",
+            required: false,
+            info: "Some normal clothes"
           }],
           requiredItems: ["robe"],
           dialogue: ["Welcome to game!", "Insert Dialogue Here"],
