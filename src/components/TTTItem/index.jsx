@@ -6,7 +6,7 @@ export default function TTTItem(props){
         id: props.id
       });
     const style = transform ? {
-    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
     } : undefined;
 
     //Get item from prop
@@ -23,7 +23,7 @@ export default function TTTItem(props){
 
     return(
         <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-            <img onMouseEnter={() => changeActive(active)} onMouseLeave={() => changeActive(active)} src={active ? itemImageSelected : itemImage} alt="" />
+            <img style={{width: 100}} onMouseEnter={() => changeActive(active)} onMouseLeave={() => changeActive(active)} src={active ? itemImageSelected : itemImage} alt="" />
             {props.children}
         </div>
     )

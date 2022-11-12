@@ -8,7 +8,6 @@ import {DndContext} from '@dnd-kit/core';
 
 const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     
-  
     /*
     PLEASE READ TO UNDERSTAND
     A scene is called upon TTTAncientGreekPage where the page component feeds data to the scene prop
@@ -38,8 +37,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const items = sceneData.items
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
-
-    //console.log(items)
     
     // const [inventory, setCurrentInventory] = useState([]);
     // const [eligible, setEligible] = useState(false);
@@ -76,31 +73,43 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     /* DRAG AND DROP LOGIC */
 
     // multiple draggables
-    const draggables = [[items[0].name, true]];
+    // Second item in subarray determines if it's to be rendered or not
+    const draggables = [[items[0].name, true], [items[1], true]];
     const [dragItems, setDragItems] = useState(draggables)
 
-    // define an order
-    const order = {
-      0: "2",
-    }
+    // // define an order
+    // const order = {
+    //   0: "2",
+    // }
 
-    const createInitialStates = (type) => {
+    const createInitialDraggableStates = () => {
       let amountOfDraggables = 0;
       dragItems.forEach(item => {
         if(item[1] == true){
           amountOfDraggables++
         }
       })
+
       const initialStates = {}
       for (let i = 0; i < amountOfDraggables; i++) {
-        type == "draggable" ? initialStates[i] = null : initialStates[i] = false;
+        initialStates[i] = null
       }
 
       return initialStates
     }
 
-    const draggableInitialStates = createInitialStates("draggable");
-    const droppableInitialStates = createInitialStates("droppable");
+    const createInitialDroppableStates = () => {
+      let amountOfDroppables = 1;
+      const initialStates = {}
+      for (let i = 0; i < amountOfDroppables; i++) {
+        initialStates[i] = false;
+      }
+      return initialStates
+    }
+
+
+    const draggableInitialStates = createInitialDraggableStates();
+    const droppableInitialStates = createInitialDroppableStates();
 
     // objects states
     const [parents, setParents] = useState(draggableInitialStates);
@@ -111,8 +120,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       // get keys
       const entries = Object.entries(parents);
       const newEntries = entries.map(entry => {
-
         if (dAreaId == entry[1]) {
+          
           return <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem>
         } else {
           return null;
@@ -178,13 +187,14 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         ...prevState,
         [over.id]: true
       }));
-
+        console.log(event)
         // // update the parent of the draggable item to be the id of the droppable area
         // setParents(prevState => ({
         //   ...prevState,
         //   [active.id]: over.id
         // }));
-        setParents([]);
+        delete parents[event.active.id]
+        setParents(parents);
         setChangedClothes(true)
 
         // draggables[0][1] = false
