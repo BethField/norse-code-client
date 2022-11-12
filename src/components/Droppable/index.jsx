@@ -6,17 +6,15 @@ export default function Droppable(props) {
     id: props.id
   });
   const style = {
-    color: isOver ? 'green' : undefined,
-    width: 400,
-    height: 400,
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: (isOver ? 'url("/TTTAncientGreece/timSelected.png")' : 'url("/TTTAncientGreece/tim.png")')
+    width: 150
+    // backgroundSize: 'contain',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundImage: props.changedClothes ? `url(${props.greekTim})` : (isOver ? 'url("/TTTAncientGreece/timSelected.png")' : 'url("/TTTAncientGreece/tim.png")')
   };
   
-  
   return (
-    <div ref={setNodeRef} style={style}>
+    <div ref={setNodeRef}>
+      <img style={style} src={props.changedClothes ? props.greekTim : (isOver ? props.schoolTimHovered : props.schoolTim)} alt="" />
       {props.children}
     </div>
   );

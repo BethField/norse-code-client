@@ -8,40 +8,66 @@ import {DndContext} from '@dnd-kit/core';
 
 const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     
-    const [inventory, setCurrentInventory] = useState([]);
-    const [eligible, setEligible] = useState(false);
+  
+    /*
+    PLEASE READ TO UNDERSTAND
+    A scene is called upon TTTAncientGreekPage where the page component feeds data to the scene prop
+    A scene contains the following props: background, dialogue, info and items
+
+    sceneData contains
+      background image 
+      items is an array containing many item
+        an item contain: name, un-hovered item image, hovered item image, required boolean, info about item
+      required item is an array of required items with item names
+      dialogue is an array of dialogue options
+    
+    currentScene stores an index of the current scene, setCurrentScene sets the index of (used to get another scene)
+    */
+   
+    /* GRABBING SCENE DATA */
+
+    const backgroundImage = sceneData.backgroundImage
+    const items = sceneData.items
+    const requiredItems = sceneData.requiredItems
+    const dialogue = sceneData.dialogue
+
+    //console.log(items)
+    
+    // const [inventory, setCurrentInventory] = useState([]);
+    // const [eligible, setEligible] = useState(false);
 
     //console.log(sceneData)
 
-    // User chooses a chat option
-    const chatOptionFunction = () => {
-        eligible ? setCurrentScene(currentScene + 1) : alert("You do not have the items to move on");
-    }
+    // // User chooses a chat option
+    // const chatOptionFunction = () => {
+    //     eligible ? setCurrentScene(currentScene + 1) : alert("You do not have the items to move on");
+    // }
 
-    // User attempts to pick up an item
-    const updateInventory = (si) => {
-        if(!inventory.includes(si)){
-            setCurrentInventory(inventory => [...inventory, si]);
-        }
-    }
+    // // User attempts to pick up an item
+    // const updateInventory = (si) => {
+    //     if(!inventory.includes(si)){
+    //         setCurrentInventory(inventory => [...inventory, si]);
+    //     }
+    // }
 
     // When the inventory changes check if it's equal to the required items
-    useEffect(() => {
-        checkEqual();
-    }, [inventory]);
+    // useEffect(() => {
+    //     checkEqual();
+    // }, [inventory]);
 
-    // Check if the inventory has the required items to move on
-    const checkEqual = () => {
-        console.log("required: ", sceneData.requiredItems);
-        console.log("current inventory: ", inventory);
+    // // Check if the inventory has the required items to move on
+    // const checkEqual = () => {
+    //     console.log("required: ", sceneData.requiredItems);
+    //     console.log("current inventory: ", inventory);
 
-        if(sceneData.requiredItems.every(item => inventory.includes(item))) {
-        setEligible(true)
-        }
-    }
+    //     if(sceneData.requiredItems.every(item => inventory.includes(item))) {
+    //     setEligible(true)
+    //     }
+    // }
 
     // multiple draggables
-    const draggables = ['card-1'];
+    const draggables = [[items[0].name, true]];
+    const [dragItems, setDragItems] = useState(draggables)
 
     // define an order
     const order = {
@@ -49,9 +75,14 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     }
 
     const createInitialStates = (type) => {
-      const len = draggables.length;
+      let amountOfDraggables = 0;
+      dragItems.forEach(item => {
+        if(item[1] == true){
+          amountOfDraggables++
+        }
+      })
       const initialStates = {}
-      for (let i = 0; i < len; i++) {
+      for (let i = 0; i < amountOfDraggables; i++) {
         type == "draggable" ? initialStates[i] = null : initialStates[i] = false;
       }
 
@@ -72,7 +103,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       const newEntries = entries.map(entry => {
 
         if (dAreaId == entry[1]) {
-          return <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem>
+          return <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem>
         } else {
           return null;
         }
@@ -83,7 +114,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     const checkInitialState = () => {
       const entries = Object.entries(parents);
-      return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]}>{entry[0]}</TTTItem> : null)
+      return entries.map(entry => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]} item={items[0]}></TTTItem> : null)
     }
 
     const checkCorrectness = () => {
@@ -103,7 +134,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
               {Object.keys(objectContainerStates).map((id) => (
                   // we updated the droppable component so it would accept an 'id'
                   // prop and pass it to useDroppable
-                  <Droppable key={id} id={id} clothing={changedClothes}>
+                  <Droppable key={id} id={id} changedClothes={changedClothes} schoolTim={sceneData.schoolTim} schoolTimHovered={sceneData.hoveredSchoolTim} greekTim={sceneData.greekTim}>
                       {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
                       {checkDragInDrop(id)}
                   </Droppable>
@@ -131,23 +162,27 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         [over.id]: true
       }));
 
-      // update the parent of the draggable item to be the id of the droppable area
-      setParents(prevState => ({
-        ...prevState,
-        [active.id]: over.id
-      }));
-    } else {
+        // // update the parent of the draggable item to be the id of the droppable area
+        // setParents(prevState => ({
+        //   ...prevState,
+        //   [active.id]: over.id
+        // }));
+        setParents([]);
+        setChangedClothes(true)
 
-      // turn the parent to null (render the draggable item outside)
-      setParents (prevState => ({
-        ...prevState,
-        [active.id]: null
-      }));
+        // draggables[0][1] = false
+        // setDragItems([...draggables])
+        // console.log(dragItems)
+      } else {
 
-      
-    }
-    
+        // turn the parent to null (render the draggable item outside)
+        setParents (prevState => ({
+          ...prevState,
+          [active.id]: null
+        }));
 
+        setChangedClothes(false)
+      }
 
     }
     //console.log(sceneData.backgroundImgUrl);

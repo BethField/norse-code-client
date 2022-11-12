@@ -8,11 +8,19 @@ export default function TTTAncientGreecePage(){
       scenes: [
         {
           // scene 1
-          backgroundImgUrl: "../../assets/TTTAncientGreece/temple.jpg" ,
-          sceneItems: ["cat", "dog"],
-          requiredItems: ["cat"],
-          chatOptions: ["Go to bed", "Go to next screen"]
-          
+          backgroundImage: "/TTTAncientGreece/temple.jpg",
+          items: [{
+            name: "robe",
+            unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",
+            hoveredImage: "/TTTAncientGreece/Items/greekClothingSelected.png",
+            required: true,
+            info: "A greek robe"
+          }],
+          requiredItems: ["robe"],
+          dialogue: ["Welcome to game!", "Insert Dialogue Here"],
+          schoolTim: "/TTTAncientGreece/tim.png",
+          hoveredSchoolTim : "/TTTAncientGreece/timSelected.png",
+          greekTim: "/TTTAncientGreece/timGreek.png"
         }, 
         {
           // scene 2
