@@ -10,5 +10,6 @@ export { default as TimelineCard } from "./TimelineCard";
 export { default as LandingMainBox} from './LandingMainBox'
 export { default as Item } from './Item'
 export { default as LandingCarouselBox } from './LandingCarouselBox'
+export { default as TimelineHeader } from "./TimelineHeader"
 export { default as Login } from './Login'
 
