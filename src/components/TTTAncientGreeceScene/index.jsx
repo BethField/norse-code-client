@@ -26,7 +26,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       Droppable (TTTDroppable in the future?) is possible to be flexible to accommodate all drop areas...
         ...(unselected image, selected, and the image that is changed into once selected)
       Different droppable might depend on if it's a character or not i.e. if the item can be taken off of droppable or not
-      ...(an example of the former is tim going from school clothes to greek clothes and cannot go back)
+      ...(an example of the former is tim going from school clothes to greek clothes and cannot go back) <- Completed...?
       ...(maybe there is puzzle to rearrange items (since we are working on this with timeline STRETCH GOAL))
 
     */
@@ -76,7 +76,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     // multiple draggables
     // Second item in subarray determines if it's to be rendered or not
-    const draggables = [[items[0].name, true], [items[1].name, true]];
+    const draggables = items.map(item => [item.name, true])
+    console.log("draggables: ", draggables)
     const [dragItems, setDragItems] = useState(draggables)
 
     // // define an order
@@ -186,6 +187,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       }));
     }
 
+    //Only place if it's over droppable area that is allowed to be dropped into and is a required item
     if (over && !objectContainerStates[over.id] && requiredItems.includes(event.active.id)) {
       console.log("Active id: ", event.active.id)
       console.log("Good placement!")
@@ -201,6 +203,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         //   [active.id]: over.id
         // }));
         delete parents[event.active.id]
+        const itemsFiltered = itemsState.filter(item => item.name !== event.active.id)
+        setItemsState([...itemsFiltered])
         setParents(parents);
         setChangedClothes(true)
 
