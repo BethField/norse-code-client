@@ -9,20 +9,37 @@ export default function TTTAncientGreecePage(){
         {
           // scene 1
           backgroundImage: "/TTTAncientGreece/temple.png",
-          items: [{
-            name: "robe",
-            unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",
-            hoveredImage: "/TTTAncientGreece/Items/greekClothingSelected.png",
-            required: true,
-            info: "A greek robe"
-          },
-          {
-            name: "normalClothes",
-            unHoveredImage: "/TTTAncientGreece/Items/normalClothes.png",
-            hoveredImage: "/TTTAncientGreece/Items/normalClothesSelected.png",
-            required: false,
-            info: "Some normal clothes"
-          }],
+          items: [
+            {
+              name: "robe",
+              unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",
+              hoveredImage: "/TTTAncientGreece/Items/greekClothingSelected.png",
+              required: true,
+              info: "A greek robe"
+            },
+            {
+              name: "normalClothes",
+              unHoveredImage: "/TTTAncientGreece/Items/normalClothes.png",
+              hoveredImage: "/TTTAncientGreece/Items/normalClothesSelected.png",
+              required: false,
+              info: "Some normal clothes"
+            },
+            {
+              name: "spear",
+              unHoveredImage: "/TTTAncientGreece/Items/spear.png",
+              hoveredImage: "/TTTAncientGreece/Items/spearSelected.png",
+              required: false,
+              info: "A spear"
+            }
+          ],
+          droppables: [
+            {
+              name: "tim",
+              unHoveredImage: "/TTTAncientGreece/tim.png",
+              hoveredImage: "/TTTAncientGreece/timSelected.png",
+              changedItem: "/TTTAncientGreece/timGreek.png"
+            }
+          ],
           requiredItems: ["robe"],
           dialogue: ["Welcome to game!", "Insert Dialogue Here"],
           schoolTim: "/TTTAncientGreece/tim.png",

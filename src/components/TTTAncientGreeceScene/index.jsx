@@ -37,8 +37,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const items = sceneData.items
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
+    const droppables = sceneData.droppables
 
-    console.log(items)
+    console.log(droppables)
     
     // const [inventory, setCurrentInventory] = useState([]);
     // const [eligible, setEligible] = useState(false);
@@ -103,7 +104,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     }
 
     const createInitialDroppableStates = () => {
-      let amountOfDroppables = 1;
+      let amountOfDroppables = droppables.length;
       const initialStates = {}
       for (let i = 0; i < amountOfDroppables; i++) {
         initialStates[i] = false;
@@ -118,7 +119,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     // objects states
     const [parents, setParents] = useState(draggableInitialStates);
     const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
-    const [changedClothes, setChangedClothes] = useState(null)
+    const [changed, setChanged] = useState(null)
     //Important so we can keep track of what's being deleted
     const [itemsState, setItemsState] = useState(items)
 
@@ -137,7 +138,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       return newEntries;
     }
 
-    // NOTE: ITEM IS HARDCODED ATM
     const checkInitialState = () => {
       const entries = Object.entries(parents);
       return entries.map((entry, index) => entry[1] == null ? <TTTItem id={entry[0]} key={entry[0]} item={itemsState[index]}></TTTItem> : null)
@@ -146,7 +146,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const checkCorrectness = () => {
       const strOrder = JSON.stringify(order);
       const strParents = JSON.stringify(parents);
-
       strOrder === strParents ? console.log("correct order") : console.log("incorrect order");
     }
 
@@ -157,11 +156,11 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                   position: 'relative'
               }}>
               {checkInitialState()}
-              {Object.keys(objectContainerStates).map((id) => (
+              {Object.keys(objectContainerStates).map((id, index) => (
                   // we updated the droppable component so it would accept an 'id'
                   // prop and pass it to useDroppable
                   //NOTE: HARD CODED CHARACTER DROPPABLE (need to change to we have selected, unselected and changed images)
-                  <Droppable key={id} id={id} changedClothes={changedClothes} schoolTim={sceneData.schoolTim} schoolTimHovered={sceneData.hoveredSchoolTim} greekTim={sceneData.greekTim}>
+                  <Droppable key={id} id={id} changed={changed} droppable={droppables[0]}>
                       {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
                       {checkDragInDrop(id)}
                   </Droppable>
@@ -206,7 +205,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         const itemsFiltered = itemsState.filter(item => item.name !== event.active.id)
         setItemsState([...itemsFiltered])
         setParents(parents);
-        setChangedClothes(true)
+        setChanged(true)
 
         // draggables[0][1] = false
         // setDragItems([...draggables])
@@ -214,12 +213,12 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       } else {
         console.log("Cannot place that there!")
         // turn the parent to null (render the draggable item outside)
-        setParents (prevState => ({
-          ...prevState,
-          [active.id]: null
-        }));
+        // setParents (prevState => ({
+        //   ...prevState,
+        //   [active.id]: null
+        // }));
 
-        setChangedClothes(false)
+        // setChanged(false)
       }
 
     }
