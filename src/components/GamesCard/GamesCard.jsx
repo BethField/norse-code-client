@@ -1,12 +1,24 @@
 import React from "react";
 import { useState, useRef } from "react"
-import { Box, Card, CardContent, Collapse, CardActions, CardActionArea, CardMedia, Typography, Stack, Accordion, Slide, Drawer } from "@mui/material"
+import { Box, Card, CardMedia, Typography, styled, Badge} from "@mui/material"
 import "./index.css"
 
-const GamesCard = ({name, subject, level, description, img}) => {
+const GamesCard = ({name, subject, level, description, img, available}) => {
 
     const [showDisplay, setShowDisplay] = useState(false)
     const containerRef = useRef(null)
+
+    const subjectColours = (subject) => {
+        if(subject == "History") {
+            return "#DA8F3F";
+        } else if (subject == "Geography") {
+            return "#43AA8B"
+        } else if (subject == "Philosophy") {
+            return "#CE6A85";
+        } else {
+            return "#1E91D6"
+        }
+    }
 
     const show = () => {
         setShowDisplay(true)
@@ -16,25 +28,40 @@ const GamesCard = ({name, subject, level, description, img}) => {
         setShowDisplay(false)
     }
 
+    const StyledBadge = styled(Badge) (({theme}) => ({
+        '& .MuiBadge-badge': {
+            right: 40,
+            top: 0,
+            border: `2px solid ${theme.palette.background.paper}`,
+            borderRadius: "500px",
+            paddingTop: "24px",
+            paddingBottom: "24px",
+            fontSize: "20px",
+        }
+    }))
+
+
 
     return(
-        <Card className="gameCard" sx={{ maxWidth: 345, margin: 2 }}>
-            <CardMedia
-            className="cardImage"
-            component="img"
-            image="https://picsum.photos/200"
-            alt="green iguana"
-            />
-            <Box className="cardBox">
-                <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography>
-            </Box>
-         </Card>
+            <Card className="gameCard" sx={{ width: 400, margin: 2, borderRadius: 5}}>
+                {available ? null : <div className="ribbon">Coming soon!</div> }
+                <CardMedia
+                className="cardImage"
+                component="img"
+                image="https://picsum.photos/200"
+                alt="green iguana"
+                />
+                <StyledBadge badgeContent={level} color={level == "KS1" ? "secondary" : "primary"} sx={{width: "100%"}}>
+                    <Box className="cardBox" sx={{ width: "100%", bgcolor: subjectColours(subject) }}>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {description}
+                        </Typography>
+                    </Box>
+                </StyledBadge>
+            </Card>
     )
 }
  
