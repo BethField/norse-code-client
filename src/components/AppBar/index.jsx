@@ -78,7 +78,7 @@ export default function SearchAppBar() {
                     <NavLink style={{marginRight: 20}} to="/login">
                         LOG IN
                     </NavLink>
-                    <NavLink style={{marginRight: 20}}>
+                    <NavLink style={{marginRight: 20}} to="/register">
                         REGISTER
                     </NavLink>
                 </Box>
