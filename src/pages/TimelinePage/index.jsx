@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Timeline, TimelineCard, TimelineHeader } from "../../components";
+import { DndContext } from '@dnd-kit/core';
 
+import { Timeline, TimelineCard, TimelineHeader } from "../../components";
+import { DraggableItem } from "../../components/DraggableItem";
 import "./index.css";
 
 const TimelinePage = () => {
@@ -28,27 +30,36 @@ const TimelinePage = () => {
 
   function displayCards() {
     return cards.map((card) => (
-      <TimelineCard
+      <DraggableItem id={card.card_id}>
+        <TimelineCard
         key={card}
         id={card.card_id}
         order={card.card_order}
         imgPath={card.card_img_path}
         date={card.card_date}
         description={card.card_description}
-      />
+        />
+      </DraggableItem>
     ));
   }
 
+  function handleDragEnd(){
+    console.log("hello");
+  }
+
   return (
-    <main className="timeline-page">
-      <TimelineHeader />
-      <div className="timeline-container">
-        <Timeline dots={dots} setDots={setDots} />
-      </div>
-      <div className="card-container">
-        <div className="card-scroll-box">{displayCards()}</div>
-      </div>
-    </main>
+    // create, handleDragEnd function for DnDContext
+    <DndContext onDragEnd={handleDragEnd}>
+      <main className="timeline-page">
+        <TimelineHeader />
+        <div className="timeline-container">
+          <Timeline dots={dots} setDots={setDots} />
+        </div>
+        <div className="card-container">
+          <div className="card-scroll-box">{displayCards()}</div>
+        </div>
+      </main>
+    </DndContext>
   );
 };
 
