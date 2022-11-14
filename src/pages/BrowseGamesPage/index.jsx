@@ -17,12 +17,15 @@ function BrowseGamesPage() {
   return (
     <Box>
 
-      <Stack direction="row" spacing={2} justifyContent="space-between">
+      <Stack direction="row" spacing={5} justifyContent="space-between" margin="20px">
         <FilterBar historyOnly={historyOnly} setHistoryOnly={setHistoryOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly}
           setGeographyOnly={setGeographyOnly} setPhilosophyOnly={setPhilosophyOnly} setArtHistoryOnly={setArtHistoryOnly} levelKS1={levelKS1} setLevelKS1={setLevelKS1}
           levelKS2={levelKS2} setLevelKS2={setLevelKS2}
         />
-        <GamesList historyOnly={historyOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly} levelKS1={levelKS1} levelKS2={levelKS2}/>
+        <GamesList historyOnly={historyOnly} setHistoryOnly={setHistoryOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly}
+          setGeographyOnly={setGeographyOnly} setPhilosophyOnly={setPhilosophyOnly} setArtHistoryOnly={setArtHistoryOnly} levelKS1={levelKS1} setLevelKS1={setLevelKS1}
+          levelKS2={levelKS2} setLevelKS2={setLevelKS2}
+        />
 
       </Stack>
     </Box>
