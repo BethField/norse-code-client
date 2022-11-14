@@ -5,6 +5,7 @@ import TTTItem from "../TTTItem";
 import Droppable from "../Droppable";
 import "./index.css"
 import {DndContext} from '@dnd-kit/core';
+import { InvertColors } from "@mui/icons-material";
 
 const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     
@@ -39,6 +40,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const dialogue = sceneData.dialogue
     const droppables = sceneData.droppables
 
+    console.log(sceneData)
+
     /* INVENTORY MANAGEMENT */
     const [inventory, setCurrentInventory] = useState([]);
     const [eligible, setEligible] = useState(false);
@@ -46,13 +49,20 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     // User chooses a chat option
     const chatOptionFunction = () => {
         // eligible ? setCurrentScene(currentScene + 1) : alert("You do not have the items to move on");
-        eligible ? alert("You can move to next scene") : alert("You do not have the items to move on");
+        if(eligible){
+          //Clear states and go to next scene
+          // setCurrentInventory([])
+          // setEligible(false)
+          setCurrentScene(currentScene + 1)
+        } else {
+          console.log("you cannot go to next scene")
+        }
       }
 
     // User attempts to pick up an item
-    const updateInventory = (si) => {
-        if(!inventory.includes(si)){
-            setCurrentInventory(inventory => [...inventory, si]);
+    const updateInventory = (sceneItem) => {
+        if(!inventory.includes(sceneItem)){
+            setCurrentInventory(inventory => [...inventory, sceneItem]);
         }
     }
 
@@ -63,21 +73,18 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     // Check if the inventory has the required items to move on
     const checkEqual = () => {
-        console.log("required: ", sceneData.requiredItems);
-        console.log("current inventory: ", inventory);
-
         if(sceneData.requiredItems.every(item => inventory.includes(item))) {
         setEligible(true)
         }
     }
 
     /* DRAG AND DROP LOGIC */
-
     // multiple draggables
     // Second item in subarray determines if it's to be rendered or not
+
     const draggables = items.map(item => [item.name, true])
-    console.log("draggables: ", draggables)
     const [dragItems, setDragItems] = useState(draggables)
+    console.log("dragItems: ", dragItems)
 
     const createInitialDraggableStates = () => {
       let amountOfDraggables = 0;
@@ -108,10 +115,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const draggableInitialStates = createInitialDraggableStates();
     const droppableInitialStates = createInitialDroppableStates();
 
-    console.log(draggableInitialStates, droppableInitialStates)
-
     // objects states
     const [parents, setParents] = useState(draggableInitialStates);
+    console.log("parents: ", parents)
     const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
     const [changed, setChanged] = useState(null)
     //Important so we can keep track of what's being deleted
@@ -122,7 +128,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       const entries = Object.entries(parents);
       const newEntries = entries.map((entry, index) => {
         if (dAreaId == entry[1]) {
-          
           return <TTTItem id={entry[0]} key={entry[0]} item={itemsState[index]}></TTTItem>
         } else {
           return null;
@@ -153,11 +158,11 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                   </Droppable>
               ))}
               <div>
-                  Current inventory: {inventory.length == 0 ? <p>Empty</p> : inventory.map(i => <p>{i}</p>)}
+                  Current inventory: {inventory.length == 0 ? <p>Empty</p> : inventory.map(i => <p key={i}>{i}</p>)}
               </div>
               <div className="bottom-area">
                   <ul>Required Items: 
-                      {sceneData.requiredItems.map(si => <li>{si}</li>)}
+                      {sceneData.requiredItems.map(si => <li key={si}>{si}</li>)}
                   </ul>
                   <ul>
                       <button onClick={chatOptionFunction}>Go to next scene</button>
@@ -186,14 +191,12 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     //Only place if it's over droppable area that is allowed to be dropped into and is a required item
     if (over && !objectContainerStates[over.id] && requiredItems.includes(event.active.id)) {
-      console.log("Active id: ", event.active.id)
       console.log("Good placement!")
       // change the container filled status to true
       setObjectContainerStates(prevState => ({
         ...prevState,
         [over.id]: true
       }));
-        console.log(event)
         delete parents[event.active.id]
         const itemsFiltered = itemsState.filter(item => item.name !== event.active.id)
         setItemsState([...itemsFiltered])
