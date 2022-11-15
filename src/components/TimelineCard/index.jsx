@@ -8,7 +8,7 @@ import "./index.css";
 const TimelineCard = ({ id, order, imgPath, date, description }) => {
   return (
     <Card
-      sx={{ width: 190, height: 210 }}
+      sx={{ width: 0.99, height: 0.99 }}
       id={id}
       order={order}
       date={date}
