@@ -6,6 +6,30 @@ import "./index.css";
 import LockIcon from '@mui/icons-material/Lock';
 
 const Login = () => {
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        const login = { username: data.get('username'), password: data.get('password') };
+
+        const options = {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(login)
+        }
+        
+        const res = await fetch("http://localhost:3001/users/login", options);
+
+        if (res.status === 200) {
+            alert(`Correct credentials, ${login.username}`);
+            window.location.assign('/user')
+        }
+    }
+
     return (
         <>
             <div className='container'>
@@ -31,11 +55,12 @@ const Login = () => {
                     overflow: 'visible'
                 }}
                 >
-                    <CardContent sx={{display: 'flex', flexDirection: 'column'}}>
+                    <CardContent component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexDirection: 'column'}}>
                         <Avatar sx={{ width:50, height: 50, objectFit: 'contain', display: 'inline-block', verticalAlign: 'bottom', paddingRight: 5}} alt="key" src="../src/assets/iconsLogSign/key.png" />
                         <Typography sx={{ fontSize: 30, textAlign: 'center', display: 'inline-block'}}>
                             SIGN IN
                         </Typography>
+                        
                         <TextField 
                             sx={{backgroundColor: "#FFFFFF"}}
                             margin='normal'
