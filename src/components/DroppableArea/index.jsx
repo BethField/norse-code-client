@@ -9,7 +9,7 @@ export function DroppableArea(props) {
   const borderCheck = () => {
     if(isOver) {
       // hover
-      return '4px solid rgba(249, 115, 22, 0.8)'
+      return '4px solid rgba(249, 115, 22, 0.)'
     } else if (props.objectContainerStates[props.id]["correct"]) {
       // correct
       return '4px solid green'
@@ -25,7 +25,7 @@ export function DroppableArea(props) {
     alignItems: 'center',
     justifyContent: 'center',
     width: "200px",
-    height: "220px",
+    height: "225px",
     borderRadius: "5px",
     border: borderCheck()
   };
