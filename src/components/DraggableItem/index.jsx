@@ -7,9 +7,12 @@ export function DraggableItem(props) {
   });
 
   const style = {
-    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    visibility: transform ? 'hidden' : 'visible',
     width: "200px",
-    height: "220px"
+    height: "220px",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 
   return (
