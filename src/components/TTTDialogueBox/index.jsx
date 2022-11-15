@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TTTDialogueBox(){
+export default function TTTDialogueBox({dialogue, dialogueState, setDialogueState}){
      return (
         <div style={{
             border: '8px solid #CE6A85',
@@ -12,7 +12,16 @@ export default function TTTDialogueBox(){
             top: 750-100-5,
             left: 1500/2-800/2-5
         }}>
-            <p style={{ color: 'white' }}>This is dialogue</p>
+            <div style={{ height: 140, display: 'flex', alignItems: 'center', padding: 30}}>
+                <p style={{ color: 'white', fontFamily: 'Roboto' }}>{dialogue}</p>
+                <button onClick={() => setDialogueState(dialogueState + 1)} style={{
+                    padding: 20,
+                    border: 'none',
+                    borderRadius: '50%',
+                    backgroundColor: '#127133',
+                }}>Next</button>
+            </div>
+            
         </div>
      )
 }

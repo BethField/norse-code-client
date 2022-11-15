@@ -6,14 +6,15 @@ export default function Droppable(props) {
     id: props.id
   });
   const style = {
-    width: 150
+    width: 250
     // backgroundSize: 'contain',
     // backgroundRepeat: 'no-repeat',
     // backgroundImage: props.changedClothes ? `url(${props.greekTim})` : (isOver ? 'url("/TTTAncientGreece/timSelected.png")' : 'url("/TTTAncientGreece/tim.png")')
   };
+  console.log(props.droppable.position[0])
 
   return (
-    <div ref={setNodeRef}>
+    <div ref={setNodeRef} style={{position: 'absolute', top: props.droppable.position[1], left: props.droppable.position[0]}}>
       <img style={style} src={props.changed ? props.droppable.changedItem : (isOver ? props.droppable.hoveredImage : props.droppable.unHoveredImage)} alt="" />
       {props.children}
     </div>

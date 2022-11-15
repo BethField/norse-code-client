@@ -5,7 +5,6 @@ import TTTItem from "../TTTItem";
 import Droppable from "../Droppable";
 import "./index.css"
 import {DndContext} from '@dnd-kit/core';
-import { InvertColors } from "@mui/icons-material";
 
 const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     
@@ -29,7 +28,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
       Different droppable might depend on if it's a character or not i.e. if the item can be taken off of droppable or not
       ...(an example of the former is tim going from school clothes to greek clothes and cannot go back) <- Completed...?
       ...(maybe there is puzzle to rearrange items (since we are working on this with timeline STRETCH GOAL))
-
     */
    
     /* GRABBING SCENE DATA */
@@ -39,20 +37,20 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
     const droppables = sceneData.droppables
-
-    console.log(sceneData)
+    console.log(items)
 
     /* INVENTORY MANAGEMENT */
     const [inventory, setCurrentInventory] = useState([]);
     const [eligible, setEligible] = useState(false);
+    const [dialogueState, setDialogueState] = useState(0);
 
     // User chooses a chat option
     const chatOptionFunction = () => {
         // eligible ? setCurrentScene(currentScene + 1) : alert("You do not have the items to move on");
         if(eligible){
           //Clear states and go to next scene
-          // setCurrentInventory([])
-          // setEligible(false)
+          setCurrentInventory([])
+          setEligible(false)
           setCurrentScene(currentScene + 1)
         } else {
           console.log("you cannot go to next scene")
@@ -82,9 +80,12 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     // multiple draggables
     // Second item in subarray determines if it's to be rendered or not
 
-    const draggables = items.map(item => [item.name, true])
-    const [dragItems, setDragItems] = useState(draggables)
-    console.log("dragItems: ", dragItems)
+    const [dragItems, setDragItems] = useState(items.map(item => [item.name, true]))
+
+    useEffect(() => {
+      setDragItems(items.map(item => [item.name, true]))
+      setItemsState(items)
+    }, [sceneData])
 
     const createInitialDraggableStates = () => {
       let amountOfDraggables = 0;
@@ -117,11 +118,19 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
 
     // objects states
     const [parents, setParents] = useState(draggableInitialStates);
-    console.log("parents: ", parents)
+    useEffect(() => {
+      setParents(createInitialDraggableStates())
+    }, [dragItems])
+
     const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
     const [changed, setChanged] = useState(null)
     //Important so we can keep track of what's being deleted
     const [itemsState, setItemsState] = useState(items)
+
+    useEffect(() => {
+      setObjectContainerStates(createInitialDroppableStates())
+      setChanged(null)
+    }, [parents])
 
     const checkDragInDrop = (dAreaId) => {
       // get keys
@@ -157,19 +166,14 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                       {checkDragInDrop(id)}
                   </Droppable>
               ))}
-              <div>
-                  Current inventory: {inventory.length == 0 ? <p>Empty</p> : inventory.map(i => <p key={i}>{i}</p>)}
-              </div>
+
               <div className="bottom-area">
-                  <ul>Required Items: 
-                      {sceneData.requiredItems.map(si => <li key={si}>{si}</li>)}
-                  </ul>
                   <ul>
                       <button onClick={chatOptionFunction}>Go to next scene</button>
                   </ul>
-
               </div>
-                </div>
+              <TTTDialogueBox dialogue={dialogue[dialogueState]} dialogueState={dialogueState} setDialogueState={setDialogueState}></TTTDialogueBox>
+          </div>
       </DndContext>
     );
   
