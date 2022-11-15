@@ -27,10 +27,6 @@ const TimelinePage = () => {
           .map(({ value }) => value);
 
         setCards(shuffledCards);
-
-        //console.log("ordered card data: ", cardData);
-        // C: see the card data
-        //console.log("initial card data: ", shuffledCards);
       } catch (err) {
         console.log(err);
       }
@@ -81,9 +77,7 @@ const TimelinePage = () => {
     return newEntries;
   }
 
-
-
-  //~~~~~~~~~~~~ CHECKING FUNCTION ~~~~~~~~~~~~
+  // Function to check the current order of the cards, and set them either correct or incorrect
   function handleCheckAnswer() {
 
     const order = 
@@ -99,10 +93,6 @@ const TimelinePage = () => {
       9: cards[8].card_order,
     }
 
-    console.log("order ", order);
-    console.log("dndpairings ", dnDPairings);
-    console.log("shuffled cards ", cards);
-
     const orderEntries = Object.entries(order);
     const dnDPairingsEntries = Object.entries(dnDPairings);
 
@@ -112,7 +102,6 @@ const TimelinePage = () => {
     // They value correctly match up, the card is in the right place
     for (let i = 0; i < orderEntries.length; i++) {
       if(orderEntries[i][1] == dnDPairingsEntries[i][1]) {
-        console.log(`I am card: ${dnDPairingsEntries[i][0]} and I am the same`);
         setObjectContainerStates(prevState => ({
           ...prevState,
             [dnDPairings[i+1]]: {
@@ -121,11 +110,9 @@ const TimelinePage = () => {
             }
         }));
 
-        console.log("updated states, container states", objectContainerStates);
       } else {
         // True, meaning there is something in the container, but it's in the wrong place
         if(dnDPairingsEntries[i][1]) {
-          console.log(`I am card: ${dnDPairingsEntries[i][0]} and I am in the wrong place`);
           let temp = dnDPairingsEntries[i][1];
 
           setDndPairings (prevState => ({
