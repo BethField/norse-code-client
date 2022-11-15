@@ -27,6 +27,10 @@ const TimelinePage = () => {
           .map(({ value }) => value);
 
         setCards(shuffledCards);
+
+        //console.log("ordered card data: ", cardData);
+        // C: see the card data
+        //console.log("initial card data: ", shuffledCards);
       } catch (err) {
         console.log(err);
       }
@@ -77,14 +81,83 @@ const TimelinePage = () => {
     return newEntries;
   }
 
+
+
+  //~~~~~~~~~~~~ CHECKING FUNCTION ~~~~~~~~~~~~
+  function handleCheckAnswer() {
+
+    const order = 
+    {
+      1: cards[0].card_order,
+      2: cards[1].card_order,
+      3: cards[2].card_order,
+      4: cards[3].card_order,
+      5: cards[4].card_order,
+      6: cards[5].card_order,
+      7: cards[6].card_order,
+      8: cards[7].card_order,
+      9: cards[8].card_order,
+    }
+
+    console.log("order ", order);
+    console.log("dndpairings ", dnDPairings);
+    console.log("shuffled cards ", cards);
+
+    const orderEntries = Object.entries(order);
+    const dnDPairingsEntries = Object.entries(dnDPairings);
+
+    console.log("order entries", orderEntries);
+    console.log("dndPairing entries", dnDPairingsEntries);
+
+    // They value correctly match up, the card is in the right place
+    for (let i = 0; i < orderEntries.length; i++) {
+      if(orderEntries[i][1] == dnDPairingsEntries[i][1]) {
+        console.log(`I am card: ${dnDPairingsEntries[i][0]} and I am the same`);
+        setObjectContainerStates(prevState => ({
+          ...prevState,
+            [dnDPairings[i+1]]: {
+              ...prevState[dnDPairings[i+1]],
+              ["correct"]: true
+            }
+        }));
+
+        console.log("updated states, container states", objectContainerStates);
+      } else {
+        // True, meaning there is something in the container, but it's in the wrong place
+        if(dnDPairingsEntries[i][1]) {
+          console.log(`I am card: ${dnDPairingsEntries[i][0]} and I am in the wrong place`);
+          let temp = dnDPairingsEntries[i][1];
+
+          setDndPairings (prevState => ({
+            ...prevState,
+            [dnDPairingsEntries[i][0]]: null
+          }));
+
+          setObjectContainerStates(prevState => ({
+            ...prevState,
+              [temp]: {
+                ...prevState[temp],
+                ["filled"]: false
+              }
+          }));
+
+          // False, meaning there is nothing inside the containter, just log
+        } else {
+          console.log("This container is empty... continuing without changing anything...");
+        }
+      }
+    }
+  }
+
   function handleDragStart(event) {
-    console.log(event);
+    // console.log(event);
     setActiveId(event.active.id - 1);
   }
 
   function handleDragEnd(event) {
     const { over, active } = event;
-
+    // log the event
+    console.log("drag-end", event)
     // copied this over
     setActiveId(null);
     // firstly, check if an active item has a parent, if it does set that parent to false
@@ -127,7 +200,7 @@ const TimelinePage = () => {
     // create, handleDragEnd function for DnDContext
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
       <main className="timeline-page">
-        <TimelineHeader />
+        <TimelineHeader handleCheckAnswer={handleCheckAnswer}/>
         <div className="timeline-container">
           <Timeline
             dots={dots}

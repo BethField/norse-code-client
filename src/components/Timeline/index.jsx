@@ -26,14 +26,9 @@ const Timeline = ({ cards, objectContainerStates, dnDPairings }) => {
   }
 
   function displayDots() {
-    console.log("timeline cards", cards);
     return cards.map((card, i) => (
       <DroppableArea key={i+1} id={i+1} objectContainerStates={objectContainerStates}>
         {checkDragInDrop(i+1)}
-        {console.log("function execution", checkDragInDrop())}
-        {/* <div className="drop-square" id={i}>
-          <div className="dot" key={i} id={i}></div>
-        </div> */}
       </DroppableArea>
 
     ));
