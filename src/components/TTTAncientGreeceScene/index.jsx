@@ -43,6 +43,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const [inventory, setCurrentInventory] = useState([]);
     const [eligible, setEligible] = useState(false);
     const [dialogueState, setDialogueState] = useState(0);
+    const [happyState, setHappyState] = useState(false)
 
     // User chooses a chat option
     const chatOptionFunction = () => {
@@ -142,7 +143,6 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
           return null;
         }
       });
-
       return newEntries;
     }
 
@@ -161,12 +161,11 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
               {Object.keys(objectContainerStates).map((id, index) => (
                   // we updated the droppable component so it would accept an 'id'
                   // prop and pass it to useDroppable
-                  <Droppable key={id} id={id} changed={changed} droppable={droppables[index]}>
+                  <Droppable key={id} id={id} changed={changed} happyState={happyState} setHappyState={setHappyState} droppable={droppables[index]}>
                       {/* get all keys from draggable objects state -> loop through the keys, check if the value at that key matches id of this droppable area*/}
                       {checkDragInDrop(id)}
                   </Droppable>
               ))}
-
               <div className="bottom-area">
                   <ul>
                       <button onClick={chatOptionFunction}>Go to next scene</button>
@@ -209,6 +208,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         updateInventory(event.active.id)
       } else {
         console.log("Cannot place that there!")
+        setHappyState(true)
         //Dialogue action about it not being something that can be placed
       }
 

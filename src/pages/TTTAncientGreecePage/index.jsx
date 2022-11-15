@@ -33,6 +33,8 @@ export default function TTTAncientGreecePage(){
               unHoveredImage: "/TTTAncientGreece/tim.png",
               hoveredImage: "/TTTAncientGreece/timSelected.png",
               changedItem: "/TTTAncientGreece/timGreek.png",
+              sadTim : "/TTTAncientGreece/timSad.png",
+              hoveredSadTim: "/TTTAncientGreece/timSadSelected.png",
               position: [1150, 200]
             }
           ],

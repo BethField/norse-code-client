@@ -1,12 +1,4 @@
-import { useState, useEffect } from "react";
-import TTTInfoBox from "../TTTInfoBox";
-import TTTDialogueBox from "../TTTDialogueBox";
-import TTTItem from "../TTTItem";
-import Droppable from "../Droppable";
 import "./index.css"
-import {DndContext} from '@dnd-kit/core';
-import { blueGrey } from "@mui/material/colors";
-import { Rotate90DegreesCcw } from "@mui/icons-material";
 
 const TTTAncientGreeceStartScene = (props) => {
     return (

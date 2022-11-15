@@ -1,9 +1,9 @@
 import { createTheme } from "@mui/material/styles";
 
-const appTheme = createTheme({
+const darkTheme = createTheme({
   palette: {
     blueButton: {
-      main: '#66ACEA',
+      main: '#66ACEA' ,
       dark: '#2F73C1',
       contrastText: 'black'
     },
@@ -36,4 +36,4 @@ const appTheme = createTheme({
   }
 })
 
-export default appTheme;
+export default darkTheme;

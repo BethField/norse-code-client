@@ -12,16 +12,19 @@ export default function TTTDialogueBox({dialogue, dialogueState, setDialogueStat
             top: 750-100-5,
             left: 1500/2-800/2-5
         }}>
-            <div style={{ height: 140, display: 'flex', alignItems: 'center', padding: 30}}>
-                <p style={{ color: 'white', fontFamily: 'Roboto' }}>{dialogue}</p>
-                <button onClick={() => setDialogueState(dialogueState + 1)} style={{
-                    padding: 20,
+            <div style={{ height: 140, display: 'flex', alignItems: 'center', padding: 30, maxWidth: 650}}>
+                <p style={{ color: 'white', fontFamily: 'Roboto', fontSize: 20 }}>{dialogue}</p>
+            </div>
+            <img src="/TTTAncientGreece/right-long-solid.svg" onClick={() => setDialogueState(dialogueState + 1)} style={{
+                    position: 'absolute',
+                    left: 720,
+                    top: 75,
+                    width: 30,
+                    padding: 10,
                     border: 'none',
                     borderRadius: '50%',
-                    backgroundColor: '#127133',
-                }}>Next</button>
-            </div>
-            
+                    backgroundColor: '#127133'
+                }}></img>
         </div>
      )
 }

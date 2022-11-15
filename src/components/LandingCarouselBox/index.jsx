@@ -1,12 +1,11 @@
 import React from "react"
 import { Box, Card, ThemeProvider, Typography, Container, Button } from "@mui/material"
-import appTheme from "../../theme"
 import Item from '../Item'
 import './index.css'
 
 export default function LandingCarouselBox(){
     return(
-        <ThemeProvider theme={appTheme}>
+        <>
             <Card sx={{
                 width: 3/5,
                 minHeight: 3/5,
@@ -37,6 +36,6 @@ export default function LandingCarouselBox(){
                     </div>
                     </div>
             </Card>
-        </ThemeProvider>
+        </>
     )
 }

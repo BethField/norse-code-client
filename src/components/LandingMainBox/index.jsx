@@ -1,11 +1,12 @@
 import React from "react"
 import { Box, Card, ThemeProvider, Typography, Container, Button } from "@mui/material"
-import appTheme from "../../theme"
+import lightTheme from "../../theme/lightTheme"
+import darkTheme from "../../theme/darkTheme"
 import './index.css'
 
 export default function LandingMainBox(){
     return(
-        <ThemeProvider theme={appTheme}>
+        <>
             <Card sx={{
                 width: 3/5,
                 minHeight: 3/5,
@@ -31,6 +32,6 @@ export default function LandingMainBox(){
                     <img className="landingTMImg" src="src\assets\timeline.png" alt="Picture of yard" width={250} />
                 </Box>
             </Card>
-        </ThemeProvider>
+        </>
     )
 }
