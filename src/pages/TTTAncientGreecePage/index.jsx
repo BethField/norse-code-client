@@ -44,10 +44,14 @@ export default function TTTAncientGreecePage(){
               "Tim: What I am wearing now won't do in this period! Help me pick out some clothes!"],
             final: ["Great choice! This will help me blend in now! Let's go check out the markets!"]
             },
-          questionInfo: {
-            question: "What is the name of the clothes worn in Ancient Greece?",
-            options: ["Togas", "Loincloths", "Chitons"],
-            answer: "Chitons"
+          // questionInfo: {
+          //   question: "What is the name of the clothes worn in Ancient Greece?",
+          //   options: ["Togas", "Loincloths", "Chitons"],
+          //   answer: "Chitons"
+          // },
+          info: {
+            text: "This is some info about Chitons",
+            img: "/TTTAncientGreece/Items/greekClothing.png"
           }
         },
         {

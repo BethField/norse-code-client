@@ -38,6 +38,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const dialogue = sceneData.dialogue
     const droppables = sceneData.droppables
     const questionInfo = sceneData.questionInfo
+    const info = sceneData.info
     console.log(items)
 
     /* INVENTORY MANAGEMENT */
@@ -47,8 +48,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const [happyState, setHappyState] = useState(false)
     const [greyOut, setGreyOut] = useState(true)
     const [questionAnswered, setQuestionAnswered] = useState(false)
-    const [showQuestion, setShowQuestion] = useState(false)
+    const [showInfo, setShowInfo] = useState(false)
 
+    
     // User chooses a chat option
     const chatOptionFunction = () => {
         // eligible ? setCurrentScene(currentScene + 1) : alert("You do not have the items to move on");
@@ -176,8 +178,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                       <button onClick={chatOptionFunction}>Go to next scene</button>
                   </ul>
               </div>
-              <TTTDialogueBox dialogue={dialogue.initial[dialogueState]} dialogueLength={dialogue.initial.length} setGreyOut={setGreyOut} dialogueState={dialogueState} setDialogueState={setDialogueState} dialogueFinal={dialogue.final[0]} questionAnswered={questionAnswered} currentScene={currentScene} setCurrentScene={setCurrentScene}></TTTDialogueBox>
-              {showQuestion ? <TTTInfoBox questionInfo={questionInfo} setQuestionAnswered={setQuestionAnswered}></TTTInfoBox> : null}
+              <TTTDialogueBox dialogue={dialogue.initial[dialogueState]} dialogueLength={dialogue.initial.length} setGreyOut={setGreyOut} dialogueState={dialogueState} setDialogueState={setDialogueState} dialogueFinal={dialogue.final[0]} questionAnswered={questionAnswered} currentScene={currentScene} setCurrentScene={setCurrentScene} setShowInfo={setShowInfo}></TTTDialogueBox>
+              {showInfo ? <TTTInfoBox info={questionInfo ? questionInfo : info} setQuestionAnswered={setQuestionAnswered}></TTTInfoBox> : null}
           </div>
       </DndContext>
     );
@@ -213,7 +215,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         setChanged(true)
         updateInventory(event.active.id)
         setHappyState(false)
-        setShowQuestion(true)
+        setShowInfo(true)
         setGreyOut(true)
       } else {
         console.log("Cannot place that there!")

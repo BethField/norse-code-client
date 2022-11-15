@@ -1,10 +1,11 @@
 import React from "react";
 
-export default function TTTDialogueBox({dialogue, dialogueLength, dialogueState, setDialogueState, setGreyOut, dialogueFinal, questionAnswered, currentScene, setCurrentScene}){
+export default function TTTDialogueBox({dialogue, dialogueLength, dialogueState, setDialogueState, setGreyOut, dialogueFinal, questionAnswered, currentScene, setCurrentScene, setShowInfo}){
 
     const handleClick = () => {
         if(questionAnswered){
             setCurrentScene(currentScene + 1)
+            setShowInfo(false)
         }
         setDialogueState(dialogueState + 1)
         console.log(dialogueState)
@@ -13,7 +14,6 @@ export default function TTTDialogueBox({dialogue, dialogueLength, dialogueState,
             setGreyOut(false)
         }
     }
-
     console.log()
 
      return (
