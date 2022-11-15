@@ -3,4 +3,4 @@ export { default as TimelinePage } from "./TimelinePage";
 export { default as Home } from './Home'
 export { default as LoginPage } from './LoginPage'
 export { default as Register } from './Register'
-export { default as Scores } from './Scores'
+export { default as UserHome } from './UserHome'

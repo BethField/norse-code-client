@@ -46,12 +46,12 @@ const TimelinePage = () => {
     return initialStates;
   };
 
-  // CURRENT AIM : SET UP STATE AND DROPPING IN FUNCTIONALITY
-
   const droppableInitialStates = createInitialStates("droppable");
   const draggableInitialStates = createInitialStates("draggable");
 
-  const [objectContainerStates, setObjectContainerStates] = useState(droppableInitialStates);
+  const [objectContainerStates, setObjectContainerStates] = useState(
+    droppableInitialStates
+  );
   const [dnDPairings, setDndPairings] = useState(draggableInitialStates);
 
   // below function, has same role as checkInitialState (basically, checks the parents, if they're null render inside the container div)
@@ -76,20 +76,6 @@ const TimelinePage = () => {
     });
     return newEntries;
   }
-
-  // const checkDragInDrop = (droppableAreaId) => {
-  //   // get keys
-  //   const entries = Object.entries(dnDPairings);
-  //   const newEntries = entries.map(entry => {
-  //     if (droppableAreaId == entry[1]) {
-  //       return <DraggableItem id={entry[0]} key={entry[0]}>{entry[0]}</DraggableItem>
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-
-  //   return newEntries;
-  // }
 
   function handleDragStart(event) {
     console.log(event);
@@ -137,7 +123,6 @@ const TimelinePage = () => {
     }
   }
 
-  console.log("before return even runs, dndpairings", dnDPairings);
   return (
     // create, handleDragEnd function for DnDContext
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
