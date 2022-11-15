@@ -37,6 +37,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const requiredItems = sceneData.requiredItems
     const dialogue = sceneData.dialogue
     const droppables = sceneData.droppables
+    const questionInfo = sceneData.questionInfo
     console.log(items)
 
     /* INVENTORY MANAGEMENT */
@@ -44,6 +45,9 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     const [eligible, setEligible] = useState(false);
     const [dialogueState, setDialogueState] = useState(0);
     const [happyState, setHappyState] = useState(false)
+    const [greyOut, setGreyOut] = useState(true)
+    const [questionAnswered, setQuestionAnswered] = useState(false)
+    const [showQuestion, setShowQuestion] = useState(false)
 
     // User chooses a chat option
     const chatOptionFunction = () => {
@@ -158,6 +162,7 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                   position: 'relative'
               }}>
               {checkInitialState()}
+              { greyOut ? <div className="grey-out" style={{ position: 'absolute', width: 1500, height: 750, backgroundColor: 'rgb(0,0,0,0.8)', zIndex: 0}}></div> : null}
               {Object.keys(objectContainerStates).map((id, index) => (
                   // we updated the droppable component so it would accept an 'id'
                   // prop and pass it to useDroppable
@@ -171,7 +176,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
                       <button onClick={chatOptionFunction}>Go to next scene</button>
                   </ul>
               </div>
-              <TTTDialogueBox dialogue={dialogue[dialogueState]} dialogueState={dialogueState} setDialogueState={setDialogueState}></TTTDialogueBox>
+              <TTTDialogueBox dialogue={dialogue.initial[dialogueState]} dialogueLength={dialogue.initial.length} setGreyOut={setGreyOut} dialogueState={dialogueState} setDialogueState={setDialogueState} dialogueFinal={dialogue.final[0]} questionAnswered={questionAnswered} currentScene={currentScene} setCurrentScene={setCurrentScene}></TTTDialogueBox>
+              {showQuestion ? <TTTInfoBox questionInfo={questionInfo} setQuestionAnswered={setQuestionAnswered}></TTTInfoBox> : null}
           </div>
       </DndContext>
     );
@@ -206,9 +212,15 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
         setParents(parents);
         setChanged(true)
         updateInventory(event.active.id)
+        setHappyState(false)
+        setShowQuestion(true)
+        setGreyOut(true)
       } else {
         console.log("Cannot place that there!")
-        setHappyState(true)
+        if(droppables[0].sadTim){
+          setHappyState(true)
+        }
+        
         //Dialogue action about it not being something that can be placed
       }
 

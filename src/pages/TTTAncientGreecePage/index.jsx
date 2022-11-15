@@ -39,12 +39,16 @@ export default function TTTAncientGreecePage(){
             }
           ],
           requiredItems: ["robe"],
-          dialogue: [
-            "Hi, I'm Time Travelling Tim! I need your expertise to help me get through Ancient Greece!", 
-            "What I am wearing now won't do in this period! Help me pick out some clothes!"],
-          schoolTim: "/TTTAncientGreece/tim.png",
-          hoveredSchoolTim : "/TTTAncientGreece/timSelected.png",
-          greekTim: "/TTTAncientGreece/timGreek.png"
+          dialogue: {
+            initial: ["Tim: Hi, I'm Time Travelling Tim! I need your expertise to help me get through Ancient Greece!", 
+              "Tim: What I am wearing now won't do in this period! Help me pick out some clothes!"],
+            final: ["Great choice! This will help me blend in now! Let's go check out the markets!"]
+            },
+          questionInfo: {
+            question: "What is the name of the clothes worn in Ancient Greece?",
+            options: ["Togas", "Loincloths", "Chitons"],
+            answer: "Chitons"
+          }
         },
         {
           // scene 2
@@ -77,10 +81,16 @@ export default function TTTAncientGreecePage(){
             }
           ],
           requiredItems: ["spear"],
-          dialogue: ["Welcome to game!", "Insert Dialogue Here"],
-          schoolTim: "/TTTAncientGreece/tim.png",
-          hoveredSchoolTim : "/TTTAncientGreece/timSelected.png",
-          greekTim: "/TTTAncientGreece/timGreek.png"
+          dialogue: {
+            initial: ["Tim: Hi, I'm Time Travelling Tim! I need your expertise to help me get through Ancient Greece!", 
+              "Tim: What I am wearing now won't do in this period! Help me pick out some clothes!"],
+            final: ["Great choice! This will help me blend in now! Let's go check out the markets!"]
+            },
+          questionInfo: {
+            question: "What is the name of the clothes worn in Ancient Greece?",
+            options: ["Togas", "Loincloths", "Chitons"],
+            answer: "Chitons"
+          }
         }
       ]
     }

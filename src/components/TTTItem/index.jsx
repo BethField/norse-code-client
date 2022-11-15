@@ -28,7 +28,7 @@ export default function TTTItem(props){
 
     return(
         <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-            <img style={{width: 150}} onMouseEnter={() => changeActive(active)} onMouseLeave={() => changeActive(active)} src={active ? itemImageSelected : itemImage} alt="" />
+            <img style={{width: 150, fontSize: 20}} onMouseEnter={() => changeActive(active)} onMouseLeave={() => changeActive(active)} src={active ? itemImageSelected : itemImage} alt="" />
             {props.children}
         </div>
     )

@@ -1,6 +1,22 @@
 import React from "react";
+import { useState } from "react";
+import './index.css'
 
-export default function TTTInfoBox(){
+export default function TTTInfoBox({questionInfo, setQuestionAnswered}){
+    
+    const [showResult, setShowResult] = useState(false)
+    const [result, setResult] = useState("Incorrect!")
+
+    const handleClick = (answer) => {
+        setShowResult(true)
+        if(answer == questionInfo.answer){            
+            setResult("Correct!")
+            setQuestionAnswered(true)
+        } else {
+            setResult("Incorrect!")
+        }
+    }
+
     return (
         <div style={{
             display: 'flex',
@@ -17,7 +33,7 @@ export default function TTTInfoBox(){
             top: 750/2-300/2,
             left: 1500/2-600/2
         }}>
-            <h1>Correct!</h1>
+            <h1>{questionInfo.question}</h1>
             <div style={{
                 width: 300,
                 height: 100,
@@ -27,15 +43,19 @@ export default function TTTInfoBox(){
                 padding: 20,
                 borderRadius: 20
             }}>
-                <h3>Information and image giving more detail about their correct answer</h3>
+                <div>
+                    <h3 className="option" onClick={() => handleClick(questionInfo.options[0])}><li>{questionInfo.options[0]}</li></h3>
+                    <h3 className="option" onClick={() => handleClick(questionInfo.options[1])}><li>{questionInfo.options[1]}</li></h3>
+                    <h3 className="option" onClick={() => handleClick(questionInfo.options[2])}><li>{questionInfo.options[2]}</li></h3>
+                </div>
             </div>
-            <button style={{
+            {showResult ? <div style={{
                 backgroundColor: '#90BE6D',
                 border: 'none',
                 padding: 20,
                 borderRadius: 20,
                 margin: 10
-            }}>Continue</button>
+            }}>{result}</div> : null}
         </div>
     )
 }

@@ -15,7 +15,7 @@ export default function Droppable(props) {
 
   console.log(props.happyState)
 
-
+  
 
   return (
     <div ref={setNodeRef} style={{position: 'absolute', top: props.droppable.position[1], left: props.droppable.position[0]}}>

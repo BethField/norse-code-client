@@ -1,6 +1,21 @@
 import React from "react";
 
-export default function TTTDialogueBox({dialogue, dialogueState, setDialogueState}){
+export default function TTTDialogueBox({dialogue, dialogueLength, dialogueState, setDialogueState, setGreyOut, dialogueFinal, questionAnswered, currentScene, setCurrentScene}){
+
+    const handleClick = () => {
+        if(questionAnswered){
+            setCurrentScene(currentScene + 1)
+        }
+        setDialogueState(dialogueState + 1)
+        console.log(dialogueState)
+        if(dialogueState == dialogueLength-2){
+            console.log("set false")
+            setGreyOut(false)
+        }
+    }
+
+    console.log()
+
      return (
         <div style={{
             border: '8px solid #CE6A85',
@@ -11,11 +26,11 @@ export default function TTTDialogueBox({dialogue, dialogueState, setDialogueStat
             position: 'absolute',
             top: 750-100-5,
             left: 1500/2-800/2-5
-        }}>
+        }}>    
             <div style={{ height: 140, display: 'flex', alignItems: 'center', padding: 30, maxWidth: 650}}>
-                <p style={{ color: 'white', fontFamily: 'Roboto', fontSize: 20 }}>{dialogue}</p>
+                <p style={{ color: 'white', fontFamily: 'Roboto', fontSize: 20 }}>{questionAnswered ? dialogueFinal : dialogue}</p>
             </div>
-            <img src="/TTTAncientGreece/right-long-solid.svg" onClick={() => setDialogueState(dialogueState + 1)} style={{
+            <img src="/TTTAncientGreece/right-long-solid.svg" onClick={handleClick} style={{
                     position: 'absolute',
                     left: 720,
                     top: 75,
