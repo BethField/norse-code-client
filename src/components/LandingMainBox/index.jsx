@@ -2,6 +2,7 @@ import React from "react"
 import { Box, Card, ThemeProvider, Typography, Container, Button } from "@mui/material"
 import appTheme from "../../theme"
 import './index.css'
+import TypeWriterEffect from 'react-typewriter-effect';
 
 export default function LandingMainBox(){
     return(
@@ -18,7 +19,15 @@ export default function LandingMainBox(){
                 margin: 10
             }}>
                 <Box>
-                    <Typography variant="h1" >Making Humanities Easy To Teach</Typography>
+                    <Typography variant="h1" >Making Humanities </Typography>
+                    <TypeWriterEffect 
+                        textStyle={{ fontFamily: 'Roboto","Helvetica","Arial",sans-serif', fontSize: '6rem', fontWeight: 300 }}
+                        startDelay={100}
+                        cursorColor="black"
+                        text="Easy To Teach"
+                        typeSpeed={200}
+            
+                    />
                     <Typography variant="h5">Interactive and fun humanities games for all ages. Evolve your classroom toolkit with our fun teaching solution.</Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', margin: 4}}>
                         <Button sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="lightBlueButton" >Register</Button>

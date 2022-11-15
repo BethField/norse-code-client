@@ -22,7 +22,7 @@ const Login = () => {
             body: JSON.stringify(login)
         }
         
-        const res = await fetch("http://localhost:3001/users/login", options);
+        const res = await fetch("http://localhost:3000/users/login", options);
 
         if (res.status === 200) {
             alert(`Correct credentials, ${login.username}`);

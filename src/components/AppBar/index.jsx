@@ -11,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from '@mui/material/styles'; 
 import appTheme from '../../theme'
 import { Link, NavLink } from 'react-router-dom'
+import Cookies from 'js-cookie';
 import './index.css'
 
 
@@ -75,9 +76,15 @@ export default function SearchAppBar() {
                     </NavLink>
                 </Box>
                 <Box style={{marginLeft: 'auto'}} className='navBox'>
-                    <NavLink style={{marginRight: 20}} to="/login">
-                        LOG IN
+                    {Cookies.get('userId')
+                     ? 
+                     <NavLink style={{marginRight: 20}} to="/logout">
+                        LOG OUT
                     </NavLink>
+                     : 
+                     <NavLink style={{marginRight: 20}} to="/login">
+                        LOG IN
+                    </NavLink>}
                     <NavLink style={{marginRight: 20}} to="/register">
                         REGISTER
                     </NavLink>
