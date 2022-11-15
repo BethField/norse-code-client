@@ -17,9 +17,7 @@ const TimelinePage = () => {
   useEffect(() => {
     async function loadGame() {
       try {
-        const response = await fetch(
-          `http://localhost:3000/games/timeline/${id}`
-        );
+        const response = await fetch(`http://localhost:3000/games/timeline/${id}`);
         const gameData = await response.json();
         const cardData = gameData.cards;
 
