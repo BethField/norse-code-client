@@ -9,11 +9,10 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from '@mui/material/styles'; 
-import appTheme from '../../theme'
 import { Link, NavLink } from 'react-router-dom'
 import Cookies from 'js-cookie';
 import './index.css'
-
+import { Switch } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,9 +56,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({themeMode, setThemeMode}) {
   return (
-    <ThemeProvider theme={appTheme}>
+    <>
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color='nav'>
             <Toolbar>
@@ -76,6 +75,7 @@ export default function SearchAppBar() {
                     </NavLink>
                 </Box>
                 <Box style={{marginLeft: 'auto'}} className='navBox'>
+                    <Switch onChange={() => setThemeMode(!themeMode)} sx={{ mr: 2}}/>
                     {Cookies.get('userId')
                      ? 
                      <NavLink style={{marginRight: 20}} to="/logout">
@@ -102,6 +102,6 @@ export default function SearchAppBar() {
             </Toolbar>
         </AppBar>
         </Box>
-    </ThemeProvider>
+    </>
   );
 }

@@ -77,14 +77,74 @@ const TimelinePage = () => {
     return newEntries;
   }
 
+  // Function to check the current order of the cards, and set them either correct or incorrect
+  function handleCheckAnswer() {
+
+    const order = 
+    {
+      1: cards[0].card_order,
+      2: cards[1].card_order,
+      3: cards[2].card_order,
+      4: cards[3].card_order,
+      5: cards[4].card_order,
+      6: cards[5].card_order,
+      7: cards[6].card_order,
+      8: cards[7].card_order,
+      9: cards[8].card_order,
+    }
+
+    const orderEntries = Object.entries(order);
+    const dnDPairingsEntries = Object.entries(dnDPairings);
+
+    console.log("order entries", orderEntries);
+    console.log("dndPairing entries", dnDPairingsEntries);
+
+    // They value correctly match up, the card is in the right place
+    for (let i = 0; i < orderEntries.length; i++) {
+      if(orderEntries[i][1] == dnDPairingsEntries[i][1]) {
+        setObjectContainerStates(prevState => ({
+          ...prevState,
+            [dnDPairings[i+1]]: {
+              ...prevState[dnDPairings[i+1]],
+              ["correct"]: true
+            }
+        }));
+
+      } else {
+        // True, meaning there is something in the container, but it's in the wrong place
+        if(dnDPairingsEntries[i][1]) {
+          let temp = dnDPairingsEntries[i][1];
+
+          setDndPairings (prevState => ({
+            ...prevState,
+            [dnDPairingsEntries[i][0]]: null
+          }));
+
+          setObjectContainerStates(prevState => ({
+            ...prevState,
+              [temp]: {
+                ...prevState[temp],
+                ["filled"]: false
+              }
+          }));
+
+          // False, meaning there is nothing inside the containter, just log
+        } else {
+          console.log("This container is empty... continuing without changing anything...");
+        }
+      }
+    }
+  }
+
   function handleDragStart(event) {
-    console.log(event);
+    // console.log(event);
     setActiveId(event.active.id - 1);
   }
 
   function handleDragEnd(event) {
     const { over, active } = event;
-
+    // log the event
+    console.log("drag-end", event)
     // copied this over
     setActiveId(null);
     // firstly, check if an active item has a parent, if it does set that parent to false
@@ -127,7 +187,7 @@ const TimelinePage = () => {
     // create, handleDragEnd function for DnDContext
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
       <main className="timeline-page">
-        <TimelineHeader />
+        <TimelineHeader handleCheckAnswer={handleCheckAnswer}/>
         <div className="timeline-container">
           <Timeline
             dots={dots}

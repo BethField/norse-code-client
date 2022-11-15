@@ -1,11 +1,14 @@
 .timeline {
-  position: absolute;
+  /* position: absolute; */
   width: 220%;
   height: 10px;
   background-color: #da5c5c;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 3rem;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .drop-square {

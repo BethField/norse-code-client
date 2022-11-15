@@ -1,8 +1,34 @@
 .header-container {
   position: absolute;
-  margin-top: 5px;
+  margin-top: 20px;
   width: 90%;
   height: 40px;
   display: flex;
   justify-content: space-between;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.header-texts {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.check-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  margin-top: 35px;
 }

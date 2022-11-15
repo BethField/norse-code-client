@@ -9,7 +9,7 @@ export function DraggableItem(props) {
   const style = {
     visibility: transform ? 'hidden' : 'visible',
     width: "200px",
-    height: "220px",
+    height: "17em",
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
