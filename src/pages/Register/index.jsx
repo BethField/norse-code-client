@@ -1,8 +1,31 @@
 import React from 'react';
 import { Grid, Paper, Avatar, Stack, Typography, TextField, Button } from '@mui/material';
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import "./index.css";   
+
 const Register = () => {
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        sendData({username: data.get('username'), password: data.get('password')});
+    }
+
+    async function sendData(newUser) {
+        const options = { 
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        }
+        const res = await fetch("http://localhost:3001/users/register", options);
+
+        if (res.status === 201) {
+            alert(`User ${username} has been created.`)
+        }
+    }
+
+    
 
     const paperStyle={
         padding: '60px 20px',
@@ -31,7 +54,6 @@ const Register = () => {
                 <form className='form'>
                     <TextField 
                     sx={{backgroundColor: "#FFFFFF"}}
-                    required
                     fullWidth
                     margin='normal'
                     id='name'
@@ -40,7 +62,6 @@ const Register = () => {
                     />
                     <TextField 
                     sx={{backgroundColor: "#FFFFFF"}}
-                    required
                     fullWidth
                     margin='normal'
                     id='surname'
@@ -66,7 +87,6 @@ const Register = () => {
                     />
                     <TextField 
                     sx={{backgroundColor: "#FFFFFF"}}
-                    required
                     fullWidth
                     margin='normal'
                     id='year'
