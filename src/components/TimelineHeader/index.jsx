@@ -6,7 +6,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import "./index.css";
 
-const TimelineHeader = () => {
+const TimelineHeader = ({ handleCheckAnswer }) => {
   return (
     <div className="header-container">
       <div className="top-buttons">
@@ -23,7 +23,7 @@ const TimelineHeader = () => {
       <Typography sx={{ color: "white" }}>
         Place the cards in the correct order on the timeline
       </Typography>
-      <Button>Check Answer</Button>
+      <Button onClick={handleCheckAnswer}>Check Answer</Button>
     </div>
   );
 };
