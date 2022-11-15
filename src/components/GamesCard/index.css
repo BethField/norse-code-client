@@ -1,0 +1,56 @@
+.gameCard {
+    transition: height 0.8s ease;
+    overflow: hidden;
+    position: relative;
+}
+  
+.cardImage {
+    transition: height 0.8s ease;
+    height: 180px;
+}
+
+.cardBox {
+transition: height 0.8s ease;
+    padding: 10px;
+    height: 30px;
+}
+
+.gameCard:hover .cardImage {
+    height: 100px;
+}
+
+.gameCard:hover .cardBox {
+    height: 110px;
+}
+
+.ribbon {
+    margin: 0;
+    padding: 0;
+    background: #F9C74F;
+    color:black;
+    font-size: 20px;
+    padding:0.5em 0;
+    position: absolute;
+    top:0;
+    right:0;
+    transform: translateX(30%) translateY(0%) rotate(45deg);
+    transform-origin: top left;
+}
+
+.ribbon:before,
+.ribbon:after {
+  content: '';
+  position: absolute;
+  top:0;
+  margin: 0 -1px; /* tweak */
+  width: 100%;
+  height: 100%;
+  background: #F9C74F;
+}
+.ribbon:before {
+  right:100%;
+}
+
+.ribbon:after {
+  left:100%;
+}

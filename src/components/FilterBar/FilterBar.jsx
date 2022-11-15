@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react"
-import { Box, List, ListItem, ListItemButton, ListItemText, Collapse, ListSubheader } from "@mui/material"
+import { Box, List, ListItem, ListItemButton, ListItemText, Collapse, ListSubheader, styled } from "@mui/material"
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material"
 
 const FilterBar = ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, artHistoryOnly,
@@ -47,61 +47,82 @@ const FilterBar = ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, 
         setOpenSubject(!openSubject);
     };
 
+    const StyledListItemSection = styled(ListItemButton) (({theme}) => ({
+        "&:hover": {color: "white"},
+        backgroundColor: "skyblue",
+        color: "black",
+        borderRadius: "20px",
+        margin: "10px"
+    }))
+
+    const StyledListItem = styled(Box) (({theme})=> ({
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-evenly",
+        
+    }))
 
 
     return(
         <Box
         bgcolor="skyblue"
         flex={1}
-        p={2}
-        sx={{ display: { xs: "none", sm: "block" }}}
+        p={2} 
+        sx={{ display: { xs: "none", sm: "block" },
+        background: "linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)",
+        alignItems: "center"
+        }}
         >
-        <List
-            sx={{ width: '100%', maxWidth: 360 }}
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            subheader={
-                <ListSubheader component="div" id="nested-list-subheader" sx={{bgcolor: "skyblue"}}>
-                Search our Games by filter
-                </ListSubheader>
-            }
-            >
-            <ListItemButton onClick={handleLevelClick}>
-                <ListItemText primary="Level" />
-                {openLevel ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={openLevel} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: levelKS1 ? "white" : null }}>
-                    <ListItemText onClick={setKS1} primary="KS1" />
-                </ListItemButton>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: levelKS2 ? "white" : null }}>
-                    <ListItemText onClick={setKS2} primary="KS2" />
-                </ListItemButton>
-                </List>
-            </Collapse>
+            <List
+                sx={{ width: '100%' }}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+                subheader={
+                    <ListSubheader component="div" id="nested-list-subheader" sx={{bgcolor: "#263440", color: "white", fontSize: "25px", mb: 5, p: 1, textAlign: "center"}}>
+                    Search games by filter
+                    </ListSubheader>
+                }
+                >
+                <StyledListItemSection onClick={handleLevelClick}>
+                    <ListItemText primary="Level" />
+                    {openLevel ? <ExpandLess /> : <ExpandMore />}
+                </StyledListItemSection>
+                <Collapse in={openLevel} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                    <ListItemButton onClick={setKS1} sx={{ ml: 10, mb: 2, borderRadius: 5, bgcolor: levelKS1 ? "#2F73C1" : "white", "&:hover": {color: "white"}}}>
+                        <ListItemText primary="KS1" />
+                    </ListItemButton>
+                    <ListItemButton onClick={setKS2} sx={{ ml: 10, mb: 2, borderRadius: 5, bgcolor: levelKS2 ? "#2F73C1" : "white", "&:hover": {color: "white"} }}>
+                        <ListItemText primary="KS2" />
+                    </ListItemButton>
+                    </List>
+                </Collapse>
 
-            <ListItemButton onClick={handleSubjectClick}>
-                <ListItemText primary="Subject" />
-                {openSubject ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={openSubject} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: historyOnly ? "white" : null }} >
-                    <ListItemText onClick={setHistory} primary="History" />
-                </ListItemButton>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: geographyOnly ? "white" : null }}>
-                    <ListItemText onClick={setGeography} primary="Geography" />
-                </ListItemButton>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: philosophyOnly ? "white" : null }}>
-                    <ListItemText onClick={setPhilosophy} primary="Philosophy" />
-                </ListItemButton>
-                <ListItemButton sx={{ ml: 10, mb: 2, borderRadius: 2, bgcolor: artHistoryOnly ? "white" : null }}>
-                    <ListItemText onClick={setArtHistory} primary="Art History" />
-                </ListItemButton>
-                </List>
-            </Collapse>
-        </List>
+                <StyledListItemSection onClick={handleSubjectClick}>
+                    <ListItemText primary="Subject" />
+                    {openSubject ? <ExpandLess /> : <ExpandMore />}
+                </StyledListItemSection>
+                <Collapse in={openSubject} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                    <ListItemButton sx={{ml: 10, mb: 2, borderRadius: 5, bgcolor: historyOnly ? "#2F73C1" : "white", "&:hover": {color: "white"}  }} >
+                        <StyledListItem onClick={setHistory}>
+                            <ListItemText sx={{width: "80%"}} primary="History" />
+                            <ListItemText sx={{width: "20%"}} primary={historyOnly.length} />
+                        </StyledListItem>
+                    </ListItemButton>
+                    <ListItemButton onClick={setGeography} sx={{ ml: 10, mb: 2, borderRadius: 5, bgcolor: geographyOnly ? "#2F73C1" : "white", "&:hover": {color: "white"} }}>
+                        <ListItemText primary="Geography" />
+                    </ListItemButton>
+                    <ListItemButton onClick={setPhilosophy} sx={{ ml: 10, mb: 2, borderRadius: 5, bgcolor: philosophyOnly ? "#2F73C1" : "white", "&:hover": {color: "white"} }}>
+                        <ListItemText primary="Philosophy" />
+                    </ListItemButton>
+                    <ListItemButton onClick={setArtHistory} sx={{ ml: 10, mb: 2, borderRadius: 5, bgcolor: artHistoryOnly ? "#2F73C1" : "white", "&:hover": {color: "white"} }}>
+                        <ListItemText primary="Art History" />
+                    </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
 
         </Box>
     )

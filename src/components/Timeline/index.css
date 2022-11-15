@@ -1,10 +1,20 @@
 .timeline {
-  width: 100%;
+  position: absolute;
+  width: 220%;
   height: 10px;
   background-color: #da5c5c;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.drop-square {
+  border: 1px solid #da5c5c;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dot {
