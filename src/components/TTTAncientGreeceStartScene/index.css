@@ -1,0 +1,105 @@
+.header-color {
+    color: red;
+}
+
+.scene-container {
+    /* color: red; */
+    aspect-ratio: inherit;
+    width: 1500px;
+    height: 750px;
+    background: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #CE6A85;
+    border-radius: 10px;
+    /* display: flex;
+    flex-direction: column;
+    border-radius: 10px; */
+    /* background-color: rgba(103, 128, 159, 0.6) */
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.scene-item-0, .scene-item-1 {
+    width: 50px;
+    height: 50px;
+}
+
+.ac-logo{
+    animation: pulse 10s ease-in-out infinite;
+}
+
+.start-button{
+    -webkit-box-shadow: 3px 4px 0px #666666;
+    -moz-box-shadow: 3px 4px 0px #666666;
+    box-shadow: 3px 4px 0px #666666;
+    color: #ffffff;
+    font-size: 20px;
+    background: #f09e24;
+    padding: 20px 50px 20px 50px;
+    border: solid #cf8934 6px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.start-button:hover {
+    background: #ffb617;
+    text-decoration: none;
+}
+
+.button-box{
+    display: flex; 
+    flex-direction: column; 
+    position: absolute; 
+    top: 450px; 
+    left: 620px;
+}
+
+  
+.floating-head{
+    position: absolute;
+    top: 450px;
+    left: 1100px;
+    transform: rotate(10deg) translateY(-10%);
+    animation: floater 6s infinite;
+    transition: ease-in-out 2s;
+    width: 200px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(-5deg) scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: rotate(-5deg) scale(1.1);
+    }
+}
+
+@keyframes floater {
+    0% {
+        transform: rotate(10deg) translateY(-10%);transition: ease-in-out 6s;
+    }
+    25% {
+        transform: rotate(-10deg) translateX(-20%);transition: ease-in-out 6s;
+    }
+    50% {
+        transform: rotate(10deg) translateY(10%);transition: ease-in-out 6s;
+    }
+    75% {
+        transform: rotate(10deg) translateX(-10%);transition: ease-in-out 6s;
+    }
+  }
+/* .scene-item-0 {
+    top: 5px
+}
+
+.scene-item-1 {
+    left: 10%;
+} */
