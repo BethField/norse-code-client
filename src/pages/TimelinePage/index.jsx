@@ -5,16 +5,31 @@ import { DndContext, DragOverlay } from "@dnd-kit/core";
 import { Timeline, TimelineCard, TimelineHeader } from "../../components";
 import { DraggableItem } from "../../components/DraggableItem";
 
+import { useNavigate } from "react-router-dom";
+
+// Modal functionality
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+// Snackbar functionality
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
 import "./index.css";
 
 const TimelinePage = () => {
   const [cards, setCards] = useState([]);
   const [dots, setDots] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [activeId, setActiveId] = useState(null); // states for the active draggable item (used in DnD overlay)
-  const [openHelp, setOpenHelp] = useState(false);
-
-
+  const [attempts, setAttempts] = useState(0);
+  const [gameOverOpen, setGameOverOpen] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadGame() {
@@ -36,6 +51,19 @@ const TimelinePage = () => {
     loadGame();
   }, []);
 
+  // handlefunctions for when the game ends
+  const handleOpen = () => {
+    setGameOverOpen(true);
+  }
+
+  const handleClose = () => {
+    setGameOverOpen(false);
+  }
+
+  const handleCloseGames = () => {
+    navigate("/games");
+  }
+
   // Setup Draggable and Droppable states -> Currently hardcoded
   const createInitialStates = (type) => {
     const len = 9;
@@ -55,6 +83,23 @@ const TimelinePage = () => {
     droppableInitialStates
   );
   const [dnDPairings, setDndPairings] = useState(draggableInitialStates);
+
+  useEffect(() => {
+    let count = 0
+    Object.entries(objectContainerStates).forEach(objCont => {
+      if (objCont[1].correct) {
+        console.log("correct!!!!!!");
+        count++
+      } 
+      
+      if (count == 9) {
+        setTimeout(handleOpen, 500);
+      }
+
+      console.log("correct cards", count);
+    });
+
+  }, [objectContainerStates]);
 
   // below function, has same role as checkInitialState (basically, checks the parents, if they're null render inside the container div)
   function displayCards() {
@@ -81,6 +126,8 @@ const TimelinePage = () => {
 
   // Function to check the current order of the cards, and set them either correct or incorrect
   function handleCheckAnswer() {
+    // increment attempts by 1
+    setAttempts(attempts + 1);
 
     const order = 
     {
@@ -185,15 +232,32 @@ const TimelinePage = () => {
     }
   }
 
-  // Button functionality
-  // Help button
-  const handleHelpBtn = () => {
-
-  }
-
   return (
     // create, handleDragEnd function for DnDContext
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
+      {/* Dialog for the game over modal*/}
+      <Dialog
+        open={gameOverOpen}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title" sx={{textAlign: 'center'}}>
+          {"Congratulations, you did it!"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You placed all the cards in the correct order!<br/><br/>
+            You completed the game in <b>'{attempts}'</b> attempts! Great Job! <br/><br/>
+            If you'd like to see the completed timeline click <b>Close</b> <br/>
+            And if you'd like to return to the games screen click <b>Games</b>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseGames}>Games</Button>
+          <Button onClick={handleClose} autoFocus>Close</Button>
+        </DialogActions>
+      </Dialog>
       <main className="timeline-page">
         <TimelineHeader handleCheckAnswer={handleCheckAnswer}/>
         <div className="timeline-container">

@@ -1,12 +1,46 @@
 import React from "react";
+import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+// button dialog stuff
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import "./index.css";
 
-const TimelineHeader = ({ handleCheckAnswer }) => {
+const TimelineHeader = ({ handleCheckAnswer}) => {
+  
+  const [openHelp, setOpenHelp] = useState(false);
+  const [openRefresh, setOpenRefresh] = useState(false);
+  // button functionality
+
+  // help button
+  const handleHelpClickOpen = () => {
+    setOpenHelp(true);
+  }
+
+  const handleHelpClose = () => {
+    setOpenHelp(false);
+  }
+
+  // refresh button
+  const handleRefreshClickOpen = () => {
+    setOpenRefresh(true);
+  }
+
+  const handleRefreshClose = () => {
+    setOpenRefresh(false);
+  }
+
+  const handleRefreshConfirm = () => {
+    window.location.reload(false);
+  }
+
   return (
     <div className="header-container">
       <div className="top-buttons">
@@ -19,9 +53,32 @@ const TimelineHeader = ({ handleCheckAnswer }) => {
           "&:hover": {
             backgroundColor: "#fdba74"
           }
-          }}>
+          }}
+          onClick={handleHelpClickOpen}>
           <QuestionMarkIcon sx={{color: '#7c2d12', fontSize: '36px'}}></QuestionMarkIcon>
         </Button>
+        <Dialog
+          open={openHelp}
+          onClose={handleHelpClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" sx={{textAlign: 'center'}}>
+            {"How to play"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <br/>
+              The cards at the bottom of the page must be sorted into <b>chronological order</b>.<br/><br/>
+              Do this by placing the cards in order onto the <b>timeline.</b> <br/><br/>
+              Press the <b>check answer</b> button to see if your cards are in the correct place
+              the <b>incorrect cards</b> will be returned to the <b>bottom</b> of the page
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+              <Button onClick={handleHelpClose}>Close</Button>
+          </DialogActions>
+        </Dialog>
         <Button sx={{
           width: 55,
           height: 55,
@@ -31,9 +88,29 @@ const TimelineHeader = ({ handleCheckAnswer }) => {
           "&:hover": {
             backgroundColor: '#fb923c'
           }
-          }}>
+          }}
+          onClick={handleRefreshClickOpen}>
           <RestartAltIcon sx={{color: '#7c2d12', fontSize: '36px'}}></RestartAltIcon>
         </Button>
+        <Dialog
+          open={openRefresh}
+          onClose={handleRefreshClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" sx={{textAlign: 'center'}}>
+            {"Reload"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to refresh the page?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+              <Button onClick={handleRefreshConfirm}>Yes</Button>
+              <Button onClick={handleRefreshClose}>Cancel</Button>
+          </DialogActions>
+        </Dialog>
         <Button sx={{
           width: 55,
           height: 55,
