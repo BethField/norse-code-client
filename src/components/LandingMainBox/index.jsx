@@ -24,8 +24,8 @@ export default function LandingMainBox({themeMode}){
                     {themeMode ? <TyperwriterComp text={"Easy To Teach"} /> : <TyperwriterComp text={"Fun To Learn"} />}
                     <Typography variant="h5">Interactive and fun humanities games for all ages. Evolve your classroom toolkit with our fun teaching solution.</Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', margin: 4}}>
-                        <Button sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="secondary">Register</Button>
-                        <Button sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="secondary">View Games</Button>
+                        <Button href="/register" sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="secondary">Register</Button>
+                        <Button href="/games" sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="secondary">View Games</Button>
                     </Box>
                 </Box>
                 <Box id="landingImgContainer">

@@ -67,9 +67,14 @@ export default function SearchAppBar({themeMode, setThemeMode}) {
                 noWrap
                 component="div"
                 sx={{ flexGrow: 1, display: 'flex' }}
-            >
+            >   
+
                 NORSE::CODE
+
                 <Box className='navBox'>
+                    <NavLink style={{marginRight: 20}} to="/">
+                        HOME
+                    </NavLink>
                     <NavLink to="/games">
                         GAMES
                     </NavLink>
