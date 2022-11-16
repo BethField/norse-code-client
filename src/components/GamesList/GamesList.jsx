@@ -35,13 +35,17 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
                     .filter(s => !geographyOnly || s.game_subject == "Geography")
                     .filter(s => !philosophyOnly || s.game_subject == "Philosophy")
                     .filter(s => !artHistoryOnly || s.game_subject == "Art History")
+                    .map(s => {
+                        s.game_link = "/games/timeline/" + s.game_id
+                        return s
+                    })
 
         return filteredGames.length == 0 ? 
             <Box sx={{bgcolor: "skyblue", p: 2, fontSize: "30px", display: "flex", flexDirection: "column", borderRadius: "10px"}}> Nothing matches your filters! Please try again or click below to see all games!
                 <Button onClick={setAllFilters}>See All games</Button>
             </Box> : 
             filteredGames.map((s,i) => 
-            <GamesCard key={i} name={s.game_name} subject={s.game_subject} level={s.game_level} img={s.game_bg_img} description={s.game_description} available={s.available}/>)
+            <GamesCard key={i} name={s.game_name} subject={s.game_subject} level={s.game_level} img={s.game_bg_img} description={s.game_description} available={s.available} game_link={s.game_link}/>)
 
     }
 

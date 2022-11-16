@@ -5,3 +5,5 @@ export { default as TTTAncientGreecePage } from './TTTAncientGreecePage'
 export { default as LoginPage } from './LoginPage'
 export { default as Register } from './Register'
 export { default as UserHome } from './UserHome'
+export { default as LogoutPage } from './LogoutPage';
+
