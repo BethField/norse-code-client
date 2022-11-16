@@ -3,7 +3,6 @@ import { Box, Card, ThemeProvider, Typography, Container, Button } from "@mui/ma
 import lightTheme from "../../theme/lightTheme"
 import darkTheme from "../../theme/darkTheme"
 import './index.css'
-import TypeWriterEffect from 'react-typewriter-effect';
 import TypewriterComp from "../TypewriterComp"
 
 export default function LandingMainBox({themeMode}){
