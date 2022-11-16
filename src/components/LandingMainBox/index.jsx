@@ -4,7 +4,7 @@ import lightTheme from "../../theme/lightTheme"
 import darkTheme from "../../theme/darkTheme"
 import './index.css'
 import TypeWriterEffect from 'react-typewriter-effect';
-import TyperwriterComp from "../TypewriterComp"
+import TypewriterComp from "../TypewriterComp"
 
 export default function LandingMainBox({themeMode}){
     return(
@@ -21,7 +21,7 @@ export default function LandingMainBox({themeMode}){
             }}>
                 <Box>
                     <Typography variant="h1" style={{textAlign: 'left'}} >Making Humanities </Typography>
-                    {themeMode ? <TyperwriterComp text={"Easy To Teach"} /> : <TyperwriterComp text={"Fun To Learn"} />}
+                    <TypewriterComp themeMode={themeMode} />
                     <Typography variant="h5">Interactive and fun humanities games for all ages. Evolve your classroom toolkit with our fun teaching solution.</Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', margin: 4}}>
                         <Button sx={{ borderRadius: 3, padding: 2, marginRight: 10}} variant="contained" color="secondary">Register</Button>
