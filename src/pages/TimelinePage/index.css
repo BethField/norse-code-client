@@ -7,9 +7,9 @@
   align-items: center;
   justify-content: space-between;
 
-  border: 5px solid #66acea;
+  border: 5px solid #DA8F3F;
   border-radius: 30px;
-  background-color: #0e1c26;
+  background-color: #F8F5E6;
 }
 
 .game-header {
@@ -48,5 +48,5 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.5%
+  gap: 1%
 }

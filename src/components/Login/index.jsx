@@ -1,10 +1,10 @@
 import React, { cloneElement } from 'react';
-import { Box, Button, Card, CardContent, Typography, TextField, InputAdornment, Avatar } from '@mui/material';
+import { Box, Button, Card, CardContent, Typography, TextField, InputAdornment, Avatar, ThemeProvider } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import "./index.css";
 import LockIcon from '@mui/icons-material/Lock';
 
-const Login = () => {
+const Login = ({themeMode}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -38,30 +38,38 @@ const Login = () => {
                     maxWidth={400}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    padding={3}
-                    margin="auto">
+                    padding={6}
+                    margin="auto"
+                    
+                    >
+                    
                 <Card 
                     
                 sx={{ 
                     margin: 15,
-                    minWidth: 350,
-                    height: 350,
+                    minWidth: 400,
+                    height: 400,
                     backgroundColor: '#F9C74F',
                     borderBottomRightRadius: 100,
                     borderBottomLeftRadius: 100,
                     borderTopRightRadius: 50,
                     borderTopLeftRadius: 50,
-                    overflow: 'visible'
+                    overflow: 'visible',
+                    
                 }}
                 >
-                    <CardContent component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexDirection: 'column'}}>
-                        <Avatar sx={{ width:50, height: 50, objectFit: 'contain', display: 'inline-block', verticalAlign: 'bottom', paddingRight: 5}} alt="key" src="../src/assets/iconsLogSign/key.png" />
-                        <Typography sx={{ fontSize: 30, textAlign: 'center', display: 'inline-block'}}>
-                            SIGN IN
-                        </Typography>
+                    <CardContent component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexDirection: 'column' }}>
+                        <div className='form-header'>
+                            <Avatar sx={{ width:60, height: 60, objectFit: 'contain', display: 'inline-block', verticalAlign: 'bottom', paddingRight: 2}} alt="key" src="../src/assets/iconsLogSign/key.png" />
+                            <Typography sx={{ fontSize: 30, textAlign: 'center', display: 'inline-block', justifySelf: 'center'}}>
+                                SIGN IN
+                            </Typography>
+                        </div>
+                        
                         
                         <TextField 
                             sx={{backgroundColor: "#FFFFFF"}}
+                            paddingLeft='20'
                             margin='normal'
                             required
                             fullWidth
@@ -72,13 +80,13 @@ const Login = () => {
                             InputProps={{
                             startAdornment: (
                                 <InputAdornment >
-                                <PersonIcon />
+                                <PersonIcon sx={{marginRight: 2}}/>
                                 </InputAdornment>
                             ),
                             }}
                         />
                         <TextField 
-                            sx={{backgroundColor: "#F8E3B2"}}
+                            sx={{backgroundColor: "#F8E3B2", text: "1E1E1E"}}
                             margin='normal'
                             required
                             fullWidth
@@ -90,7 +98,7 @@ const Login = () => {
                             InputProps={{
                             startAdornment: (
                                 <InputAdornment >
-                                <LockIcon />
+                                <LockIcon sx={{marginRight: 2}}/>
                                 </InputAdornment>
                             ),
                             }}
@@ -104,7 +112,7 @@ const Login = () => {
                             borderRadius: 3, 
                             backgroundColor: "#F8E3B2", 
                             position: 'relative', 
-                            bottom: -48, 
+                            bottom: -94, 
                             padding: 1.5, 
                             color: '#1E1E1E', 
                             fontSize: 15

@@ -14,7 +14,7 @@ const GamesCard = ({name, subject, level, description, img, available, game_link
         } else if (subject == "Geography") {
             return "#43AA8B"
         } else if (subject == "Philosophy") {
-            return "#CE6A85";
+            return "#9C6BC2";
         } else {
             return "#1E91D6"
         }
@@ -37,6 +37,8 @@ const GamesCard = ({name, subject, level, description, img, available, game_link
             paddingTop: "24px",
             paddingBottom: "24px",
             fontSize: "20px",
+            backgroundColor: level == "KS1" ? "#F9C74F" : "#FFA07A",
+            color: "black"
         }
     }))
 
@@ -52,7 +54,7 @@ const GamesCard = ({name, subject, level, description, img, available, game_link
                     image="https://picsum.photos/200"
                     alt="green iguana"
                     />
-                    <StyledBadge badgeContent={level} color={level == "KS1" ? "secondary" : "primary"} sx={{width: "100%"}}>
+                    <StyledBadge badgeContent={level} sx={{width: "100%"}}>
                         <Box className="cardBox" sx={{ width: "100%", bgcolor: subjectColours(subject) }}>
                             <Typography gutterBottom variant="h5" component="div">
                                 {name}
@@ -67,5 +69,7 @@ const GamesCard = ({name, subject, level, description, img, available, game_link
             </Card>
     )
 }
+
+// color={level == "KS1" ? "secondary" : "primary"}
  
 export default GamesCard;

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FilterBar, GamesList } from "../../components"
 import { Box, Container, Stack } from "@mui/material"
 
-function BrowseGamesPage() {
+function BrowseGamesPage({themeMode}) {
   const [games, setGames] = useState([])
   const [historyOnly, setHistoryOnly] = useState(false)
   const [geographyOnly, setGeographyOnly] = useState(false)
@@ -20,11 +20,11 @@ function BrowseGamesPage() {
       <Stack direction="row" spacing={5} justifyContent="space-between" margin="20px">
         <FilterBar historyOnly={historyOnly} setHistoryOnly={setHistoryOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly}
           setGeographyOnly={setGeographyOnly} setPhilosophyOnly={setPhilosophyOnly} setArtHistoryOnly={setArtHistoryOnly} levelKS1={levelKS1} setLevelKS1={setLevelKS1}
-          levelKS2={levelKS2} setLevelKS2={setLevelKS2}
+          levelKS2={levelKS2} setLevelKS2={setLevelKS2} themeMode={themeMode}
         />
         <GamesList historyOnly={historyOnly} setHistoryOnly={setHistoryOnly} geographyOnly={geographyOnly} philosophyOnly={philosophyOnly} artHistoryOnly={artHistoryOnly}
           setGeographyOnly={setGeographyOnly} setPhilosophyOnly={setPhilosophyOnly} setArtHistoryOnly={setArtHistoryOnly} levelKS1={levelKS1} setLevelKS1={setLevelKS1}
-          levelKS2={levelKS2} setLevelKS2={setLevelKS2}
+          levelKS2={levelKS2} setLevelKS2={setLevelKS2} themeMode={themeMode}
         />
 
       </Stack>

@@ -6,7 +6,8 @@
 
 body {
   margin: 0;
-  background-color: #2C373F;
+  /* background-color: #2C373F; */
+  background-color: #bfdbfe;
   background-image: url('./assets/bgImg.png');
   background-size: cover;
 }

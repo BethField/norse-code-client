@@ -5,7 +5,7 @@ import { GamesCard } from ".."
 
 
 const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, artHistoryOnly,
-    setGeographyOnly, setPhilosophyOnly, setArtHistoryOnly, setLevelKS1, setLevelKS2, levelKS1, levelKS2}) => {
+    setGeographyOnly, setPhilosophyOnly, setArtHistoryOnly, setLevelKS1, setLevelKS2, levelKS1, levelKS2, themeMode}) => {
     const [games, setGames] = useState([])
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
         flex={4} 
         p={2}
         justifyContent="center"
-        sx={{background: "linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)"}}
+        sx={{background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,1) 0%, rgba(133,200,247,1) 100%)'}}
         >
             <Stack sx={{flexDirection: "row", flexWrap: "wrap", justifyContent:"center"}}>
              { displayGames() }

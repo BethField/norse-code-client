@@ -9,15 +9,15 @@ export function DraggableItem(props) {
   const style = {
     visibility: transform ? 'hidden' : 'visible',
     width: "200px",
-    height: "17em",
+    height: "14em",
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   }
 
   return (
-    <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
       {props.children}
-    </button>
+    </div>
   )
 }

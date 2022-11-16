@@ -48,7 +48,7 @@ const TimelineHeader = ({ handleCheckAnswer }) => {
         </Button>
       </div>
       <div className="header-texts">
-        <Typography variant="h4" sx={{ color: "white" }}>
+        <Typography variant="h4">
           Roman Invasion of England: AD43 - AD410
         </Typography>
         <Typography variant="subtitle1" sx={{ color: "#A1A1AA" }}>
