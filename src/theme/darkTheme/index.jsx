@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
+const font = "'Mali', cursive"
+
 const darkTheme = createTheme({
   palette: {
     blueButton: {
@@ -33,6 +35,11 @@ const darkTheme = createTheme({
       secondary: '#dc2626',
       hint: 'rgba(255,255,255,0.38)',
     },
+  },
+  typography: {
+    fontFamily: font,
+    fontWeightRegular: 500,
+    fontWeightMedium: 500,
   }
 })
 

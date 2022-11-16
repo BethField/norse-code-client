@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Paper, Avatar, Stack, Typography, TextField, Button, ThemeProvider } from '@mui/material';
 import "./index.css";   
 
-const Register = ({ThemeProvider}) => {
+const Register = ({themeMode}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,10 +28,8 @@ const Register = ({ThemeProvider}) => {
         }
     }
 
-    
-
     const paperStyle={
-        padding: '60px 20px',
+        padding: '20px 20px 60px 20px',
         width: 350, 
         margin: '50px auto', 
         backgroundColor: '#F9C74F',
@@ -41,22 +39,28 @@ const Register = ({ThemeProvider}) => {
         borderTopLeftRadius: 50,
         display: 'flex',
         flexDirection: 'column',
+        color: 'black'
     }
 
-    return (
+    return ( 
+        <>
+        {/* {themeMode} */}
         <Grid>
             <Paper elevation={20} style={paperStyle}>
                 <Grid align='center'>
-                    <Stack>
-                        <Avatar sx={{ width:50, height: 50, objectFit: 'contain'}} alt="key" src="../src/assets/iconsLogSign/key.png" />
-                    </Stack>
-                    <Typography sx={{ fontSize: 30, textAlign: 'center'}}>
-                        SIGN UP
-                    </Typography>
+                    <div className='form-header'>
+                        <Stack>
+                            <Avatar sx={{ width:60, height: 60, objectFit: 'contain', paddingRight: 2}} alt="key" src="../src/assets/iconsLogSign/key.png" />
+                        </Stack>
+                        <Typography sx={{ fontSize: 30, textAlign: 'center'}}>
+                            SIGN UP
+                        </Typography>
+                    </div>
+                    
                 </Grid>
                 <form className='form' onSubmit={handleSubmit}>
                     <TextField 
-                    sx={{backgroundColor: "#FFFFFF"}}
+                    sx={{backgroundColor: "#FFFFFF", }}
                     fullWidth
                     margin='normal'
                     id='name'
@@ -104,9 +108,12 @@ const Register = ({ThemeProvider}) => {
                         width: 200, 
                         margin: "auto auto", 
                         borderRadius: 3, 
-                        backgroundColor: "#F8E3B2", 
+                        backgroundColor: "#F8E3B2",
+                        ':hover': {
+                            color: 'white'
+                        },
                         position: 'relative', 
-                        bottom: -80,
+                        bottom: -102,
                         padding: 1.5,
                         color: '#1E1E1E', 
                         fontSize: 15}} 
@@ -114,6 +121,7 @@ const Register = ({ThemeProvider}) => {
                 </form>
             </Paper>
         </Grid>
+        </>
     )
 }
 
