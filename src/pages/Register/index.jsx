@@ -18,10 +18,13 @@ const Register = () => {
             },
             body: JSON.stringify(newUser)
         }
-        const res = await fetch("http://localhost:3001/users/register", options);
+        const res = await fetch("http://localhost:3000/users/register", options);
 
         if (res.status === 201) {
-            alert(`User ${username} has been created.`)
+            alert(`User ${newUser.username} has been created.`)
+            window.location.assign('/login');
+        } else {
+            alert("Could not create user")
         }
     }
 
@@ -51,7 +54,7 @@ const Register = () => {
                         SIGN UP
                     </Typography>
                 </Grid>
-                <form className='form'>
+                <form className='form' onSubmit={handleSubmit}>
                     <TextField 
                     sx={{backgroundColor: "#FFFFFF"}}
                     fullWidth
@@ -73,6 +76,7 @@ const Register = () => {
                     required
                     fullWidth
                     margin='normal'
+                    name='username'
                     id='username'
                     label='Username'
                     placeholder='Type your username...'
@@ -81,6 +85,8 @@ const Register = () => {
                     required
                     fullWidth
                     margin='normal'
+                    name='password'
+                    type='password'
                     id='password'
                     label='Password'
                     placeholder='Type a password...'

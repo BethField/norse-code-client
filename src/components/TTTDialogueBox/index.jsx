@@ -14,7 +14,7 @@ export default function TTTDialogueBox({dialogue, dialogueLength, dialogueState,
             setGreyOut(false)
         }
     }
-    console.log()
+    console.log(dialogue)
 
      return (
         <div style={{

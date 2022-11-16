@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from '@mui/material/styles'; 
 import { Link, NavLink } from 'react-router-dom'
+import Cookies from 'js-cookie';
 import './index.css'
 import { Switch } from '@mui/material';
 
@@ -75,9 +76,15 @@ export default function SearchAppBar({themeMode, setThemeMode}) {
                 </Box>
                 <Box style={{marginLeft: 'auto'}} className='navBox'>
                     <Switch onChange={() => setThemeMode(!themeMode)} sx={{ mr: 2}}/>
-                    <NavLink style={{marginRight: 20}} to="/login">
-                        LOG IN
+                    {Cookies.get('userId')
+                     ? 
+                     <NavLink style={{marginRight: 20}} to="/logout">
+                        LOG OUT
                     </NavLink>
+                     : 
+                     <NavLink style={{marginRight: 20}} to="/login">
+                        LOG IN
+                    </NavLink>}
                     <NavLink style={{marginRight: 20}} to="/register">
                         REGISTER
                     </NavLink>

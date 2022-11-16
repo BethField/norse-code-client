@@ -92,6 +92,8 @@ const TTTAncientGreeceScene = ({sceneData, currentScene, setCurrentScene}) => {
     useEffect(() => {
       setDragItems(items.map(item => [item.name, true]))
       setItemsState(items)
+      setDialogueState(0)
+      setQuestionAnswered(false)
     }, [sceneData])
 
     const createInitialDraggableStates = () => {
