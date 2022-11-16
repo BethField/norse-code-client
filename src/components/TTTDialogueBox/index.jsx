@@ -42,7 +42,7 @@ export default function TTTDialogueBox({
     } else if (dialogueState == dialogueLength - 1) {
       setShowArrow(false);
     }
-  }, [dialogueState, questionAnswered, currentScene]);
+  }, [dialogueState, questionAnswered, currentScene, dialogueLength]);
 
   return (
     <div
