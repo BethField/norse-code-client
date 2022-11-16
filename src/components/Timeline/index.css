@@ -2,7 +2,7 @@
   /* position: absolute; */
   width: 220%;
   height: 10px;
-  background-color: #da5c5c;
+  background-color: rgba(218, 92, 92, 0.5);
   display: flex;
   justify-content: space-around;
   align-items: center;

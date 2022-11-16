@@ -27,6 +27,7 @@ export function DroppableArea(props) {
     width: "200px",
     height: "225px",
     borderRadius: "5px",
+    backgroundColor: "#1e293b",
     border: borderCheck()
   };
 

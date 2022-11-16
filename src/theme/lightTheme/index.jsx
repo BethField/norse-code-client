@@ -1,39 +1,45 @@
 import { createTheme } from "@mui/material/styles";
 
+/*
+blue:
+  dark: #0369A1
+  base: #0EA5E9
+  light: #38BDF8
+
+orange:
+  dark: #F97316
+  base: #FB923C
+  lighter: #FDBA74
+  yellow: #FACC15
+
+*/
+
+const font = "'Mali', cursive"
+
 const lightTheme = createTheme({
   palette: {
-    blueButton: {
-      main: '#66ACEA' ,
-      dark: '#2F73C1',
-      contrastText: 'black'
-    },
-    lightBlueButton: {
-      main: '#E3F2FF',
-      dark: '#8196A8',
-      contrastText: 'black'
-    },
-    nav: {
-        main: '#F9C74F',
-        contrastText: 'rgba(0,0,0)',
-    },
-    type: 'dark',
+    type: 'light',
     primary: {
-      main: '#2F73C1',
-      contrastText: 'rgba(255,255,255,0.87)',
+      main: '#FB923C',
+      dark: '#F97316',
+      light: '#FACC15'
     },
     secondary: {
-      main: '#66ACEA',
+      main: '#f50057',
     },
     background: {
       default: '#0971BD',
-      paper: '#212A31',
+      paper: '#e0f2fe',
     },
     text: {
       primary: 'rgba(255,255,255,0.87)',
-      secondary: 'rgba(255,255,255,0.54)',
-      hint: 'rgba(255,255,255,0.38)',
     },
+  },
+  typography: {
+    fontFamily: font,
+    fontWeightRegular: 500,
+    fontWeightMedium: 500,
   }
-})
+});
 
 export default lightTheme;

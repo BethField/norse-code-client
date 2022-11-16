@@ -10,14 +10,14 @@ export default function LandingMainBox(){
             <Card sx={{
                 width: 3/5,
                 minHeight: 3/5,
-                background: 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)',
+                // background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,182,0,1) 0%, rgba(255,44,0,1) 100%);',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
                 borderRadius: 5,
                 padding: 10,
                 margin: 10
-            }}>
+            }} color='primary.main'>
                 <Box>
                     <Typography variant="h1" >Making Humanities Easy To Teach</Typography>
                     <Typography variant="h5">Interactive and fun humanities games for all ages. Evolve your classroom toolkit with our fun teaching solution.</Typography>

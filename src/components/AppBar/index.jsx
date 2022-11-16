@@ -59,7 +59,7 @@ export default function SearchAppBar({themeMode, setThemeMode}) {
   return (
     <>
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color='nav'>
+        <AppBar position="static">
             <Toolbar>
             <Typography
                 variant="h6"

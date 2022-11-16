@@ -30,7 +30,8 @@ const darkTheme = createTheme({
     },
     text: {
       primary: 'rgba(255,255,255,0.87)',
-      secondary: 'rgba(255,255,255,0.54)',
+      // secondary: 'rgba(255,255,255,0.54)',
+      secondary: '#dc2626',
       hint: 'rgba(255,255,255,0.38)',
     },
   }
