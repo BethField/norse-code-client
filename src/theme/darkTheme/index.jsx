@@ -16,9 +16,8 @@ const darkTheme = createTheme({
         main: '#0E1C26',
         contrastText: 'rgba(255,255,255,0.87)',
     },
-    type: 'dark',
     primary: {
-      main: '#2F73C1',
+      main: '#0E1C26',
       contrastText: 'rgba(255,255,255,0.87)',
     },
     secondary: {

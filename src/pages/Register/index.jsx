@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Paper, Avatar, Stack, Typography, TextField, Button } from '@mui/material';
+import { Grid, Paper, Avatar, Stack, Typography, TextField, Button, ThemeProvider } from '@mui/material';
 import "./index.css";   
 
-const Register = () => {
+const Register = ({ThemeProvider}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -82,6 +82,7 @@ const Register = () => {
                     placeholder='Type your username...'
                     />
                     <TextField 
+                    sx={{backgroundColor: "#F8E3B2"}}
                     required
                     fullWidth
                     margin='normal'

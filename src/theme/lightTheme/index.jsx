@@ -18,22 +18,22 @@ const font = "'Mali', cursive"
 
 const lightTheme = createTheme({
   palette: {
-    type: 'light',
     primary: {
       main: '#FB923C',
       dark: '#F97316',
       light: '#FACC15'
     },
     secondary: {
-      main: '#f50057',
+      main: '#FB923C',
     },
     background: {
       default: '#0971BD',
       paper: '#e0f2fe',
     },
     text: {
-      primary: 'rgba(255,255,255,0.87)',
+      primary: 'rgba(0, 0, 0, 0.54)',
     },
+    
   },
   typography: {
     fontFamily: font,

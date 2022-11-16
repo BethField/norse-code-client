@@ -2,11 +2,11 @@ import React from 'react';
 import { Login } from '../../components';
 
 
-const LoginPage = () => {
+const LoginPage = ({themeMode}) => {
 
     return (
         <main>
-            <Login />
+            <Login themeMode={themeMode}/>
         </main>
     )
 }

@@ -11,6 +11,8 @@ const TimelinePage = () => {
   const [cards, setCards] = useState([]);
   const [dots, setDots] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [activeId, setActiveId] = useState(null); // states for the active draggable item (used in DnD overlay)
+  const [openHelp, setOpenHelp] = useState(false);
+
 
   const { id } = useParams();
 
@@ -181,6 +183,12 @@ const TimelinePage = () => {
         [active.id]: null,
       }));
     }
+  }
+
+  // Button functionality
+  // Help button
+  const handleHelpBtn = () => {
+
   }
 
   return (

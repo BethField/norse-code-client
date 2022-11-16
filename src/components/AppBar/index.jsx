@@ -75,7 +75,7 @@ export default function SearchAppBar({themeMode, setThemeMode}) {
                     </NavLink>
                 </Box>
                 <Box style={{marginLeft: 'auto'}} className='navBox'>
-                    <Switch onChange={() => setThemeMode(!themeMode)} sx={{ mr: 2}}/>
+                    <Switch onChange={() => setThemeMode(!themeMode)} sx={{ mr: 2}} color="secondary"/>
                     {Cookies.get('userId')
                      ? 
                      <NavLink style={{marginRight: 20}} to="/logout">

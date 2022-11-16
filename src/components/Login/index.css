@@ -6,5 +6,11 @@
 
 .login-form {
     background-color: #F9C74F;
-    
+}
+
+.form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
