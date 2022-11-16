@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react"
-import { Box, Stack, Button } from "@mui/material"
+import { Box, Stack, Button, Typography } from "@mui/material"
 import { GamesCard } from ".."
 
 
@@ -12,8 +12,13 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
         async function fetchGames() {
           const response = await fetch(`http://localhost:3000/games`);
           const gameData = await response.json();
-          console.log(gameData)
-          setGames(gameData)
+          let sortedGameData = gameData.sort(
+            (p1, p2) => Number(p2.available) - Number(p1.available) 
+          );
+
+          console.log(sortedGameData)
+
+          setGames(sortedGameData)
         }
         fetchGames();
     }, []);
@@ -36,16 +41,19 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
                     .filter(s => !philosophyOnly || s.game_subject == "Philosophy")
                     .filter(s => !artHistoryOnly || s.game_subject == "Art History")
                     .map(s => {
-                        s.game_link = "/games/timeline/" + s.game_id
+                        s.game_link = "/games" + s.game_route
                         return s
                     })
 
         return filteredGames.length == 0 ? 
-            <Box sx={{bgcolor: "skyblue", p: 2, fontSize: "30px", display: "flex", flexDirection: "column", borderRadius: "10px"}}> Nothing matches your filters! Please try again or click below to see all games!
+            <Box sx={{bgcolor: "skyblue", p: 2, fontSize: "30px", display: "flex", flexDirection: "column", borderRadius: "10px"}}>
+                <Typography>
+                    Nothing matches your filters! Please try again or click below to see all games!
+                </Typography>
                 <Button onClick={setAllFilters}>See All games</Button>
             </Box> : 
             filteredGames.map((s,i) => 
-            <GamesCard key={i} name={s.game_name} subject={s.game_subject} level={s.game_level} img={s.game_bg_img} description={s.game_description} available={s.available} game_link={s.game_link}/>)
+            <GamesCard key={i} name={s.game_name} subject={s.game_subject} level={s.game_level} img={s.game_bg_img} description={s.game_description} available={s.available} game_link={s.game_link} img_path={s.img_path}/>)
 
     }
 
@@ -57,6 +65,7 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
         justifyContent="center"
         sx={{background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,1) 0%, rgba(133,200,247,1) 100%)'}}
         >
+            <Typography sx={{padding: "20px"}} variant="h1">Our Games</Typography>    
             <Stack sx={{flexDirection: "row", flexWrap: "wrap", justifyContent:"center"}}>
              { displayGames() }
             </Stack>

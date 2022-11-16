@@ -3,7 +3,7 @@ import { useState, useRef } from "react"
 import { Box, Card, CardMedia, Typography, styled, Badge, CardActionArea } from "@mui/material"
 import "./index.css"
 
-const GamesCard = ({name, subject, level, description, img, available, game_link}) => {
+const GamesCard = ({name, subject, level, description, img, available, game_link, img_path}) => {
 
     const [showDisplay, setShowDisplay] = useState(false)
     const containerRef = useRef(null)
@@ -51,7 +51,7 @@ const GamesCard = ({name, subject, level, description, img, available, game_link
                     <CardMedia
                     className="cardImage"
                     component="img"
-                    image="https://picsum.photos/200"
+                    image={img_path}
                     alt="green iguana"
                     />
                     <StyledBadge badgeContent={level} sx={{width: "100%"}}>
