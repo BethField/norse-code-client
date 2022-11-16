@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { Box } from '@mui/system'; 
 import { GamesCard } from '../../components';
 import './index.css';
 
@@ -52,9 +53,36 @@ export default function UserHome() {
     return(
         <main>
             <h1>Welcome to your personal account, {username}!</h1>
-            <p>More to come...</p>
-            {games.map((s,i) => 
-            <GamesCard key={i} name={s.game_name} subject={s.game_subject} level={s.game_level} img={s.game_bg_img} description={s.game_description} available={s.available} game_link={s.game_link}/>)}
+            <div className='box'>
+            
+                <Box sx={{
+                backgroundColor: 'primary.dark',
+                flexDirection: "row", 
+                flexWrap: "wrap", 
+                justifyContent:"center",
+                borderRadius: 1
+                }}>
+
+                <h1>Play your favourite games</h1>
+                
+                
+                {games.map((s,i) => 
+                <GamesCard 
+                key={i} 
+                name={s.game_name} 
+                subject={s.game_subject} 
+                level={s.game_level} 
+                img={s.game_bg_img} 
+                description={s.game_description} 
+                available={s.available} 
+                game_link={s.game_link}/>
+                )}
+            </Box>
+            </div>
+                
+            
+            
+            
         </main>
     )
 }

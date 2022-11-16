@@ -1,10 +1,10 @@
-import React, { cloneElement } from 'react';
-import { Box, Button, Card, CardContent, Typography, TextField, InputAdornment, Avatar, ThemeProvider } from '@mui/material';
+import React from 'react';
+import { Box, Button, Card, CardContent, Typography, TextField, InputAdornment, Avatar } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import "./index.css";
 import LockIcon from '@mui/icons-material/Lock';
 
-const Login = ({themeMode}) => {
+const Login = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -58,7 +58,7 @@ const Login = ({themeMode}) => {
                     
                 }}
                 >
-                    <CardContent component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexDirection: 'column' }}>
+                    <CardContent component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexDirection: 'column', paddingLeft: 6, paddingRight: 6}}>
                         <div className='form-header'>
                             <Avatar sx={{ width:60, height: 60, objectFit: 'contain', display: 'inline-block', verticalAlign: 'bottom', paddingRight: 2}} alt="key" src="../src/assets/iconsLogSign/key.png" />
                             <Typography sx={{ fontSize: 30, textAlign: 'center', display: 'inline-block', justifySelf: 'center'}}>
@@ -110,9 +110,12 @@ const Login = ({themeMode}) => {
                             width: 200, 
                             margin: "auto auto", 
                             borderRadius: 3, 
-                            backgroundColor: "#F8E3B2", 
+                            backgroundColor: "#F8E3B2",
+                            ':hover': {
+                            color: 'white'
+                            }, 
                             position: 'relative', 
-                            bottom: -94, 
+                            bottom: -97, 
                             padding: 1.5, 
                             color: '#1E1E1E', 
                             fontSize: 15

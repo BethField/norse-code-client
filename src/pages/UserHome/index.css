@@ -1,5 +1,14 @@
-h1, p {
+h1 {
     color: white;
     text-align: center;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;;
+    font-family: 'Mali', cursive,"Helvetica","Arial",sans-serif;;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
