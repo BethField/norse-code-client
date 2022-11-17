@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import TypeWriterEffect from 'react-typewriter-effect';
+import './index.css'
 
 export default function TTTDialogueBox({
   dialogue,
@@ -14,6 +16,7 @@ export default function TTTDialogueBox({
   setShowInfo,
 }) {
   const [showArrow, setShowArrow] = useState(true);
+
 
   const handleClick = () => {
     if (questionAnswered) {
@@ -39,7 +42,7 @@ export default function TTTDialogueBox({
     } else if (dialogueState == dialogueLength - 1) {
       setShowArrow(false);
     }
-  }, [dialogueState, questionAnswered, currentScene]);
+  }, [dialogueState, questionAnswered, currentScene, dialogueLength]);
 
   return (
     <div
@@ -57,9 +60,17 @@ export default function TTTDialogueBox({
       <div
         style={{ height: 140, display: "flex", alignItems: "center", padding: 30, maxWidth: 650 }}
       >
-        <p style={{ color: "white", fontFamily: "Roboto", fontSize: 20 }}>
+        {/* <p style={{ color: "white", fontFamily: "Roboto", fontSize: 20 }}>
           {questionAnswered ? dialogueFinal : dialogue}
-        </p>
+        </p> */}
+        <TypeWriterEffect
+                            key={Math.floor(Math.random() * 9000000000)} 
+                            textStyle={{ fontFamily: '"Roboto","Helvetica","Arial",sans-serif;', fontSize: '1.5rem', fontWeight: 300 }}
+                            startDelay={50}
+                            cursorColor="black"
+                            text={questionAnswered ? dialogueFinal : dialogue}
+                            typeSpeed={20}
+                        />
       </div>
       {showArrow ? (
         <img
