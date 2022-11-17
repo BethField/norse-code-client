@@ -16,7 +16,7 @@ export default function TTTDialogueBox({
   setShowInfo,
 }) {
   const [showArrow, setShowArrow] = useState(true);
-
+  const [keyState, setKeyState] = useState(0)
 
   const handleClick = () => {
     if (questionAnswered) {
@@ -33,15 +33,13 @@ export default function TTTDialogueBox({
   console.log(dialogue);
 
   useEffect(() => {
-    console.log("helloooooo");
-    console.log(dialogueState, dialogueLength - 1);
-    console.log(questionAnswered);
     setShowArrow(true);
     if (questionAnswered) {
       setShowArrow(true);
     } else if (dialogueState == dialogueLength - 1) {
       setShowArrow(false);
     }
+    setKeyState(keyState + 1)
   }, [dialogueState, questionAnswered, currentScene, dialogueLength]);
 
   return (
@@ -64,7 +62,7 @@ export default function TTTDialogueBox({
           {questionAnswered ? dialogueFinal : dialogue}
         </p> */}
         <TypeWriterEffect
-                            key={Math.floor(Math.random() * 9000000000)} 
+                            key={keyState} 
                             textStyle={{ fontFamily: '"Roboto","Helvetica","Arial",sans-serif;', fontSize: '1.5rem', fontWeight: 300 }}
                             startDelay={50}
                             cursorColor="black"

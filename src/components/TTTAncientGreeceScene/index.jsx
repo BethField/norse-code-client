@@ -48,6 +48,7 @@ const TTTAncientGreeceScene = ({ sceneData, currentScene, setCurrentScene }) => 
   const [greyOut, setGreyOut] = useState(true);
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [clickHovered, setClickHovered] = useState(false)
 
   // User chooses a chat option
   const chatOptionFunction = () => {
@@ -236,16 +237,17 @@ const TTTAncientGreeceScene = ({ sceneData, currentScene, setCurrentScene }) => 
               setDialogueState(0);
               setCurrentScene(currentScene + 1);
             }}
+            onMouseEnter={() => setClickHovered(true)}
+            onMouseLeave={() => setClickHovered(false)}
             style={{
               position: "absolute",
-              backgroundColor: "red",
               top: click.position[1],
               left: click.position[0],
-              width: 150,
-              height: 150,
+              width: 140,
+              height: 500,
             }}
           >
-            Click me
+            <img style={{width: 180}} src={clickHovered ? click.hoveredImage : click.unHoveredImage} alt="" />
           </div>
         ) : null}
       </div>
