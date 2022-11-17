@@ -51,7 +51,7 @@ export default function LandingCarouselBox({themeMode}){
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
-                borderRadius: 5,
+                borderRadius: 3,
                 padding: 10,
                 margin: 10,
             }}>

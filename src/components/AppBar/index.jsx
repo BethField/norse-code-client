@@ -66,10 +66,10 @@ export default function SearchAppBar({themeMode, setThemeMode}) {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: 'flex' }}
+                sx={{ flexGrow: 1, display: 'flex', alignItems: 'center'}}
             >   
 
-                NORSE::CODE
+                <img src="/logo2.png" style={{width: 200}} alt="" />
 
                 <Box className='navBox'>
                     <NavLink style={{marginRight: 20}} to="/">

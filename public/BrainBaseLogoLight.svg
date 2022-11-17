@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 664" width="1640" height="664">
+	<title>New Project</title>
+	<defs>
+		<image  width="1640" height="664" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABmgAAAKYAQMAAABNauWRAAAAAXNSR0IB2cksfwAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAACbSURBVHic7cGBAAAAAMOg+VNf4QBVAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwG8WbgABfv/o8AAAAABJRU5ErkJggg=="/>
+		<image  width="379" height="379" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXsAAAF7AQMAAAAJ8LlIAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAADnklEQVR4nO3cTW6lMAwAYBALlhyBo+RaXYxEjpajcIQuWVSP4fEbO3Zij8oMmvptqoI/vdgJFJKoVUV96nmeP8kzzKdfwKwB7/h5lMd3K3gpW6Rp0xYvb1O7gy8p6HYgTsLtYPZCcMRLk6hPIOzs5gSTDHQnEGZ95izNerhAEIErXlamOgKiMrUREA2OLgKiMqlBVFVZXYcYhBtAXFVRXRsABMNPDVoABD3XASDoiB4Awb1JDRwEvggGCEIRwHjBJaQFNQLFsaEGDQLFsXE/aBEojr4OgeLoU4MegeLoeyBwGPjvBgMG4bsBji9eQT8R4HtA8S7wQIBvGsXbhgEDBn44eOCNLAVjHjzwD8oTwYBB+G7gMPD/HPQYFOL/Arj/2Vv9OvDAV5r73+PufxfVvx47CHwR9BAU4/VAPU2hngi5f25GPV0Eu3oUANDVQQBAV3sBuH+eTz31qJ7cVE+f6idoo7p6EVBPMquBeqJcPRWvn+xXLyeoFyxqZc5/sOiiXtZRLxzpl6byi19OkmF/9eRR9dxN7rgdrj1zDs7Ag+OaesW/ZMoCL8ELcIXvILh+474CRoDbOxnfRwET+otDfsWcAdSAxgHxF5JfAc7PGKS91+RBmnZy3sEDeMjhxyGPH0Zwm/BDY0ie//MtWgA6gOuUnsZHYJtwiwgARyB+UCYAvCxwhhSIC0u9miaH4vGUpECB+J7tRCBKIkmBBFdh0xkCElyFTYpKg2t09EJwjI60qAyY+BRocPRE2gsMmPkUGBC4XuDASF8LPJjYnBnw4rqNAzObMwdGLoUcoPqZBROXMwdeXM4cmLmcWeCpyzMHAj0wDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBj4rwB9nAVBD5wOeGYlkAXc0mEG0IuTHHjRq9Y8+OLWSzkwacEnt4TLgbFiTnBgOU73HAeWeLquDFiXxsm6MmDbQUCdYYBfAVVYGhy7S4gsSDBV56cXgCicqG0KYHwiEkDsABsygN4wNvCAjK8qFjDxcafHILeXcaBAyICaAPm9jy4FPgvaBJR2YzoM8l9wDsQTFDdXNgjgIcS16QSlFh0j/QCC7Z4NAOUW7YHh+ilr0wEE8VthdyDasVpHQLaHdrhAEAF3AS8C7QmE24DrE0i3AbsDyFq09sQGhPHvJFYg3slc7WAUg2EDQQz6DYjjlyTeQJ7C0hNvoPm3PCsYFaB/A0V81S7glwY0C/igT/0Ge/7K3rEAOtIAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 150px;fill: #ffffff;font-weight: 400;font-family: "Mali-Regular", "Mali" } 
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+	<use id="book-open-reader-solid" href="#img2" x="255" y="123"/>
+	<text id="BrainBase" style="transform: matrix(1,0,0,1,695,389.5)" >
+		<tspan x="0" y="0" class="t0">B</tspan><tspan  y="0" class="t0">r</tspan><tspan  y="0" class="t0">a</tspan><tspan  y="0" class="t0">i</tspan><tspan  y="0" class="t0">n</tspan><tspan  y="0" class="t0">B</tspan><tspan  y="0" class="t0">a</tspan><tspan  y="0" class="t0">s</tspan><tspan  y="0" class="t0">e</tspan><tspan  y="0" class="t0">
+</tspan>
+	</text>
+</svg>

@@ -16,6 +16,7 @@ export default function LandingMainBox({themeMode}){
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
                 padding: 10,
+                borderRadius: 3,
                 margin: 10
             }}>
                 <Box>

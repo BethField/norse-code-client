@@ -1,6 +1,7 @@
 import { TTTAncientGreeceScene } from "../../components";
 import { useState, useEffect } from "react";
 import TTTAncientGreeceStartScene from "../../components/TTTAncientGreeceStartScene";
+import TTTAncientGreeceEndScene from "../../components/TTTAncientGreeceEndScene";
 
 export default function TTTAncientGreecePage() {
   // Load in the game data from the API
@@ -350,6 +351,7 @@ export default function TTTAncientGreecePage() {
 
   const [currentScene, setCurrentScene] = useState(0);
   const [sceneData, setSceneData] = useState(gameData.scenes[currentScene]);
+  const [endSceneState, setEndSceneState] = useState(false)
 
   useEffect(() => {
     setSceneData(gameData.scenes[currentScene]);
@@ -366,7 +368,11 @@ export default function TTTAncientGreecePage() {
         marginTop: 20
       }}
     >
-      {started ? (
+      <audio src="/TTTAncientGreece/game_music.mp3" autoplay controls/>
+      {console.log(currentScene)}
+      {currentScene == 9 ? 
+      <TTTAncientGreeceEndScene></TTTAncientGreeceEndScene> :
+      (started ? (
         <TTTAncientGreeceScene
           sceneData={sceneData}
           currentScene={currentScene}
@@ -377,7 +383,8 @@ export default function TTTAncientGreecePage() {
           started={started}
           setStarted={setStarted}
         ></TTTAncientGreeceStartScene>
-      )}
+      ))}
+      
     </div>
   );
 }
