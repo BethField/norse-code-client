@@ -32,8 +32,7 @@ const lightTheme = createTheme({
     },
     text: {
       primary: 'rgba(0, 0, 0, 0.54)',
-    },
-    
+    }
   },
   typography: {
     fontFamily: font,

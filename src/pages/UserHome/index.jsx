@@ -19,7 +19,8 @@ export default function UserHome() {
                 "game_topic": "roman invasion",
                 "game_type": "timeline",
                 "game_link": "/games/timeline/3",
-                "available": true
+                "available": true,
+                "img_path": 'src/assets/gamesCardImgs/RomanTimelineImg.png'
             },
             {
                 "game_description": "adventure game set in the greek time period",
@@ -27,7 +28,8 @@ export default function UserHome() {
                 "game_topic": "greek invasion",
                 "game_type": "timeline",
                 "game_link": "/games/TTTAncientGreece",
-                "available": true
+                "available": true,
+                "img_path": "src/assets/gamesCardImgs/TTTGamesCardImg.png"
             }
         ]
           console.log(gameData)
@@ -75,7 +77,9 @@ export default function UserHome() {
                 img={s.game_bg_img} 
                 description={s.game_description} 
                 available={s.available} 
-                game_link={s.game_link}/>
+                game_link={s.game_link}
+                img_path={s.img_path}
+                />
                 )}
             </Box>
             </div>

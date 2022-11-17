@@ -4,7 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import "./index.css";
 import LockIcon from '@mui/icons-material/Lock';
 
-const Login = () => {
+const Login = ({themeMode}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -68,7 +68,7 @@ const Login = () => {
                         
                         
                         <TextField 
-                            sx={{backgroundColor: "#FFFFFF"}}
+                            sx={{backgroundColor: "#FFFFFF", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                             paddingLeft='20'
                             margin='normal'
                             required
@@ -86,7 +86,7 @@ const Login = () => {
                             }}
                         />
                         <TextField 
-                            sx={{backgroundColor: "#F8E3B2", text: "1E1E1E"}}
+                            sx={{backgroundColor: "#F8E3B2", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                             margin='normal'
                             required
                             fullWidth

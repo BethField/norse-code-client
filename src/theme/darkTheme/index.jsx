@@ -34,7 +34,7 @@ const darkTheme = createTheme({
       // secondary: 'rgba(255,255,255,0.54)',
       secondary: '#dc2626',
       hint: 'rgba(255,255,255,0.38)',
-    },
+    }
   },
   typography: {
     fontFamily: font,

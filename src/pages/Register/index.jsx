@@ -60,7 +60,7 @@ const Register = ({themeMode}) => {
                 </Grid>
                 <form className='form' onSubmit={handleSubmit}>
                     <TextField 
-                    sx={{backgroundColor: "#FFFFFF", }}
+                    sx={{backgroundColor: "#FFFFFF", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                     fullWidth
                     margin='normal'
                     id='name'
@@ -68,7 +68,7 @@ const Register = ({themeMode}) => {
                     placeholder='Type your name...'
                     />
                     <TextField 
-                    sx={{backgroundColor: "#FFFFFF"}}
+                    sx={{backgroundColor: "#FFFFFF", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                     fullWidth
                     margin='normal'
                     id='surname'
@@ -76,7 +76,7 @@ const Register = ({themeMode}) => {
                     placeholder='Type your surname...'
                     />
                     <TextField 
-                    sx={{backgroundColor: "#FFFFFF"}}
+                    sx={{backgroundColor: "#FFFFFF", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                     required
                     fullWidth
                     margin='normal'
@@ -86,7 +86,7 @@ const Register = ({themeMode}) => {
                     placeholder='Type your username...'
                     />
                     <TextField 
-                    sx={{backgroundColor: "#F8E3B2"}}
+                    sx={{backgroundColor: "#F8E3B2", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                     required
                     fullWidth
                     margin='normal'
@@ -97,7 +97,7 @@ const Register = ({themeMode}) => {
                     placeholder='Type a password...'
                     />
                     <TextField 
-                    sx={{backgroundColor: "#FFFFFF"}}
+                    sx={{backgroundColor: "#FFFFFF", input: { color: themeMode ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.54)' }}}
                     fullWidth
                     margin='normal'
                     id='year'
@@ -113,7 +113,7 @@ const Register = ({themeMode}) => {
                             color: 'white'
                         },
                         position: 'relative', 
-                        bottom: -102,
+                        bottom: -110,
                         padding: 1.5,
                         color: '#1E1E1E', 
                         fontSize: 15}} 
