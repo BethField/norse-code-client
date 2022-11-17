@@ -29,7 +29,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "medievalClothes",
             unHoveredImage: "/TTTAncientGreece/Items/medievalClothes.png",
-            hoveredImage: "/TTTAncientGreece/Items/medievalClothes.png",
+            hoveredImage: "/TTTAncientGreece/Items/medievalClothesSelected.png",
             required: false,
             info: "Some medieval clothes",
             position: [200, 250],
@@ -37,7 +37,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "romanClothes",
             unHoveredImage: "/TTTAncientGreece/Items/toga.webp",
-            hoveredImage: "/TTTAncientGreece/Items/toga.webp",
+            hoveredImage: "/TTTAncientGreece/Items/togaSelected.png",
             required: false,
             info: "Some roman clothes",
             position: [1000, 250],
@@ -105,7 +105,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "bread",
             unHoveredImage: "/TTTAncientGreece/Items/bread.png",
-            hoveredImage: "/TTTAncientGreece/Items/bread.png",
+            hoveredImage: "/TTTAncientGreece/Items/breadSelected.png",
             required: true,
             info: "bread",
             position: [430, 450],
@@ -113,7 +113,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "wine",
             unHoveredImage: "/TTTAncientGreece/Items/wine.png",
-            hoveredImage: "/TTTAncientGreece/Items/wine.png",
+            hoveredImage: "/TTTAncientGreece/Items/wineSelected.png",
             required: false,
             info: "wine",
             position: [580, 400],
@@ -121,7 +121,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "fish",
             unHoveredImage: "/TTTAncientGreece/Items/fish.png",
-            hoveredImage: "/TTTAncientGreece/Items/fish.png",
+            hoveredImage: "/TTTAncientGreece/Items/fishSelected.png",
             required: false,
             info: "fish",
             position: [770, 440],
@@ -129,7 +129,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "grains",
             unHoveredImage: "/TTTAncientGreece/Items/grains.png",
-            hoveredImage: "/TTTAncientGreece/Items/grains.png",
+            hoveredImage: "/TTTAncientGreece/Items/grainsSelected.png",
             required: false,
             info: "grains",
             position: [950, 400],
@@ -138,11 +138,11 @@ export default function TTTAncientGreecePage() {
         droppables: [
           {
             name: "tim",
-            unHoveredImage: "/TTTAncientGreece/tim.png",
-            hoveredImage: "/TTTAncientGreece/timSelected.png",
+            unHoveredImage: "/TTTAncientGreece/timGreek.png",
+            hoveredImage: "/TTTAncientGreece/timGreek.png",
             changedItem: "/TTTAncientGreece/timGreek.png",
-            sadTim: "/TTTAncientGreece/timSad.png",
-            hoveredSadTim: "/TTTAncientGreece/timSadSelected.png",
+            sadTim: "/TTTAncientGreece/timGreek.png",
+            hoveredSadTim: "/TTTAncientGreece/timGreek.png",
             position: [1150, 200],
           },
         ],
@@ -184,18 +184,9 @@ export default function TTTAncientGreecePage() {
         backgroundImage: "/TTTAncientGreece/vases.png",
         items: [
           {
-            name: "vase1",
-            unHoveredImage: "/TTTAncientGreece/Items/vase1.png",
-            hoveredImage: "/TTTAncientGreece/Items/vase1.png",
-            required: true,
-            info: "vase to click",
-            position: [780, 425],
-            onclick: true,
-          },
-          {
             name: "vase2",
             unHoveredImage: "/TTTAncientGreece/Items/vase2.png",
-            hoveredImage: "/TTTAncientGreece/Items/vase2.png",
+            hoveredImage: "/TTTAncientGreece/Items/vase2Selected.png",
             required: false,
             info: "vase to not click",
             position: [950, 495],
@@ -209,6 +200,13 @@ export default function TTTAncientGreecePage() {
             "SHOPKEEPER: Those are stories about famous gods, heroes and creatures. Choose a pot and I’ll tell you about it.",
           ],
           final: [],
+        },
+        click: {
+          name: "vase1",
+          unHoveredImage: "/TTTAncientGreece/Items/vase1.png",
+          hoveredImage: "/TTTAncientGreece/Items/vase1Selected.png",
+          info: "vase to click",
+          position: [780, 390],
         },
       },
       {
@@ -266,7 +264,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "masks",
             unHoveredImage: "/TTTAncientGreece/Items/jointMask.png",
-            hoveredImage: "/TTTAncientGreece/Items/jointMask.png",
+            hoveredImage: "/TTTAncientGreece/Items/jointMaskSelected.png",
             required: true,
             info: "masks",
             position: [450, 500],
@@ -313,7 +311,7 @@ export default function TTTAncientGreecePage() {
           {
             name: "wine",
             unHoveredImage: "/TTTAncientGreece/Items/wine.png",
-            hoveredImage: "/TTTAncientGreece/Items/wine.png",
+            hoveredImage: "/TTTAncientGreece/Items/wineSelected.png",
             required: true,
             info: "wine",
             position: [500, 200],
