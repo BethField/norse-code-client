@@ -122,7 +122,7 @@ export default function TTTAncientGreecePage() {
             hoveredImage: "/TTTAncientGreece/Items/fish.png",
             required: false,
             info: "fish",
-            position: [770, 430],
+            position: [770, 440],
           },
           {
             name: "grains",
@@ -211,27 +211,8 @@ export default function TTTAncientGreecePage() {
       {
         // scene 6 - Medusa cave scene
         backgroundImage: "/TTTAncientGreece/caveBg.png",
-        items: [
-          {
-            name: "robe",
-            unHoveredImage: "/TTTAncientGreece/Items/greekClothing.png",
-            hoveredImage: "/TTTAncientGreece/Items/greekClothingSelected.png",
-            required: true,
-            info: "A greek robe",
-            position: [500, 200],
-          },
-        ],
-        droppables: [
-          {
-            name: "tim",
-            unHoveredImage: "/TTTAncientGreece/tim.png",
-            hoveredImage: "/TTTAncientGreece/timSelected.png",
-            changedItem: "/TTTAncientGreece/timGreek.png",
-            sadTim: "/TTTAncientGreece/timSad.png",
-            hoveredSadTim: "/TTTAncientGreece/timSadSelected.png",
-            position: [1150, 200],
-          },
-        ],
+        items: [],
+        droppables: [],
         requiredItems: [],
         dialogue: {
           initial: [
@@ -245,14 +226,14 @@ export default function TTTAncientGreecePage() {
         },
         questionScene: true,
         questionInfo: {
-          question: "How did Perseus use his reflective sheild an sickle?",
+          question: "How did Perseus use his reflective sheild an sickle to defeat Medusa?",
           options: [
-            "wrong option",
-            "He walked backwards using the reflective shield to see her and used the sickle to cut off her head",
-            "Another wrong option",
+            "He covered his eyes with the shield and used the sickle to cut off her arms",
+            "He walked backwards using the shield to see her and used the sickle to cut off her head",
+            "He threw the shield at her head and used the sickle to cut off her legs",
           ],
           answer:
-            "He walked backwards using the reflective shield to see her and used the sickle to cut off her head",
+            "He walked backwards using the shield to see her and used the sickle to cut off her head",
         },
         // info: {
         //   text: "After Perseus killed Medusa, he took her head and returned to King Polydectes. When he was there, he used Medusa’s head to turn Polydectes into stone and set his mother free",
@@ -283,7 +264,7 @@ export default function TTTAncientGreecePage() {
             hoveredImage: "/TTTAncientGreece/Items/jointMask.png",
             required: true,
             info: "masks",
-            position: [500, 400],
+            position: [450, 500],
           },
         ],
         droppables: [
@@ -292,14 +273,14 @@ export default function TTTAncientGreecePage() {
             unHoveredImage: "/TTTAncientGreece/actor1.png",
             hoveredImage: "/TTTAncientGreece/actor1.png",
             changedItem: "/TTTAncientGreece/maskedActor1.png",
-            position: [1250, 200],
+            position: [1250, 270],
           },
           {
             name: "actor2",
             unHoveredImage: "/TTTAncientGreece/actor2.png",
             hoveredImage: "/TTTAncientGreece/actor2.png",
             changedItem: "/TTTAncientGreece/maskedActor2.png",
-            position: [1000, 200],
+            position: [1020, 270],
           },
         ],
         requiredItems: ["masks"],
