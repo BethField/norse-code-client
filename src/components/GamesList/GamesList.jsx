@@ -7,9 +7,11 @@ import { GamesCard } from ".."
 const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, artHistoryOnly,
     setGeographyOnly, setPhilosophyOnly, setArtHistoryOnly, setLevelKS1, setLevelKS2, levelKS1, levelKS2, themeMode}) => {
     const [games, setGames] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         async function fetchGames() {
+          setIsLoading(true)
           const response = await fetch(`http://localhost:3000/games`);
           const gameData = await response.json();
           let sortedGameData = gameData.sort(
@@ -19,6 +21,7 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
           console.log(sortedGameData)
 
           setGames(sortedGameData)
+          setIsLoading(false)
         }
         fetchGames();
     }, []);
@@ -65,10 +68,21 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
         justifyContent="center"
         sx={{background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,0.8) 0%, rgba(133,200,247,0.8) 100%)'}}
         >
-            <Typography sx={{padding: "20px"}} variant="h1">Our Games</Typography>    
-            <Stack sx={{flexDirection: "row", flexWrap: "wrap", justifyContent:"center"}}>
-             { displayGames() }
-            </Stack>
+
+            {isLoading ? 
+            <Box sx={{bgcolor: "skyblue", p: 2, fontSize: "30px", display: "flex", flexDirection: "column", borderRadius: "10px"}}>
+                <Typography>
+                    Loading...
+                </Typography>
+            </Box>
+            :
+                <>
+                <Typography sx={{padding: "20px"}} variant="h1">Our Games</Typography>    
+                <Stack sx={{flexDirection: "row", flexWrap: "wrap", justifyContent:"center"}}>
+                { displayGames() }
+                </Stack>
+                </>
+            }
 
         </Box>
     )
