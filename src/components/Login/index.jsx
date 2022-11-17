@@ -24,7 +24,7 @@ const Login = ({themeMode}) => {
         const res = await fetch("http://localhost:3000/users/login", options);
 
         if (res.status === 200) {
-            alert(`Correct credentials, ${login.username}`);
+            // alert(`Correct credentials, ${login.username}`);
             window.location.assign('/user')
         }
     }
