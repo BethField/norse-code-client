@@ -76,7 +76,7 @@ export default function TTTAncientGreecePage() {
       },
       {
         // scene 2 - first wide shot of market
-        backgroundImage: "/TTTAncientGreece/marketBg.png",
+        backgroundImage: "/TTTAncientGreece/marketBgFood.png",
         items: [],
         droppables: [],
         dialogue: {
@@ -88,7 +88,9 @@ export default function TTTAncientGreecePage() {
         },
         click: {
           name: "food market",
-          position: [250, 470],
+          unHoveredImage: "/TTTAncientGreece/foodSign.png",
+          hoveredImage: "/TTTAncientGreece/foodSignSelected.png",
+          position: [300, 250]
         },
         // questionInfo: {
         //   question: "What is the name of the clothes worn in Ancient Greece?",
@@ -148,7 +150,6 @@ export default function TTTAncientGreecePage() {
         dialogue: {
           initial: [
             "TIM: I'd better pick up an offering to leave at the temple. I'm not sure what kind of offering the Gods would like...can you help me choose one?",
-            "TIM: I'm not sure if fish will be a suitable offering, maybe something else will be better",
           ],
           final: ["Great! This will be a perfect offering!"],
         },
@@ -164,7 +165,7 @@ export default function TTTAncientGreecePage() {
       },
       {
         // scene 4 - second wide shot of market
-        backgroundImage: "/TTTAncientGreece/marketBg.png",
+        backgroundImage: "/TTTAncientGreece/marketBgPottery.png",
         items: [],
         droppables: [],
         dialogue: {
@@ -173,7 +174,9 @@ export default function TTTAncientGreecePage() {
         },
         click: {
           name: "pottery",
-          position: [420, 440],
+          unHoveredImage: "/TTTAncientGreece/potterySign.png",
+          hoveredImage: "/TTTAncientGreece/potterySignSelected.png",
+          position: [490, 280],
         },
       },
       {
@@ -261,7 +264,7 @@ export default function TTTAncientGreecePage() {
       },
       {
         // scene 7 - final wide shot of market
-        backgroundImage: "/TTTAncientGreece/marketBg.png",
+        backgroundImage: "/TTTAncientGreece/marketBgAT.png",
         items: [],
         droppables: [],
         dialogue: {
@@ -270,7 +273,9 @@ export default function TTTAncientGreecePage() {
         },
         click: {
           name: "food market",
-          position: [700, 300],
+          unHoveredImage: "/TTTAncientGreece/ATSign.png",
+          hoveredImage: "/TTTAncientGreece/ATSignSelected.png",
+          position: [680, 300],
         },
       },
       {
@@ -379,9 +384,9 @@ export default function TTTAncientGreecePage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: 20
       }}
     >
-      <h1>Current Scene: {currentScene + 1}</h1>
       {started ? (
         <TTTAncientGreeceScene
           sceneData={sceneData}
