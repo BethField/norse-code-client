@@ -93,7 +93,7 @@ export default function TTTInfoBox({ info, setQuestionAnswered }) {
           left: 1500 / 2 - 600 / 2,
         }}
       >
-        <h1 style={{ color: "black" }}>Did you know!</h1>
+        <h1 style={{ color: "black" }}>Did you know?</h1>
         <div
           style={{
             width: 550,
