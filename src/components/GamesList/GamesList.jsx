@@ -63,7 +63,7 @@ const GamesList= ({historyOnly, setHistoryOnly, geographyOnly, philosophyOnly, a
         flex={4} 
         p={2}
         justifyContent="center"
-        sx={{background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,1) 0%, rgba(133,200,247,1) 100%)'}}
+        sx={{background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,0.8) 0%, rgba(133,200,247,0.8) 100%)'}}
         >
             <Typography sx={{padding: "20px"}} variant="h1">Our Games</Typography>    
             <Stack sx={{flexDirection: "row", flexWrap: "wrap", justifyContent:"center"}}>

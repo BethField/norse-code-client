@@ -14,9 +14,12 @@ function App() {
 
   const [themeMode, setThemeMode] = useState(false)
 
+  const bg_light = {backgroundColor: '#bfdbfe', backgroundImage: "url('src/assets/bgImgLight.png')", backgroundSize: 'cover'}
+  const bg_dark = {backgroundColor: '#2C373F', backgroundImage: "url('src/assets/bgImg.png')", backgroundSize: 'cover'}
+
   return (
     <ThemeProvider theme={themeMode ? darkTheme : lightTheme}>
-      <div className="App">
+      <div className="App" style={themeMode ? bg_dark : bg_light}>
         <Routes>
           <Route path="/" element={<PageWrapper themeMode={themeMode} setThemeMode={setThemeMode} />}>
             <Route index element={<Home themeMode={themeMode} />} />

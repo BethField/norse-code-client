@@ -11,7 +11,7 @@ export default function LandingMainBox({themeMode}){
             <Card sx={{
                 width: 3/5,
                 minHeight: 3/5,
-                background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,1) 0%, rgba(133,200,247,1) 100%)',
+                background: themeMode ? 'linear-gradient(180deg, rgba(13,34,50,0.8) 0%, rgba(0,0,0,1) 100%)' : 'linear-gradient(180deg, rgba(20,122,195,0.8) 0%, rgba(133,200,247,0.8) 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
