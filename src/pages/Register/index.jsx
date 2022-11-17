@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Paper, Avatar, Stack, Typography, TextField, Button, ThemeProvider } from '@mui/material';
 import "./index.css";   
 
-const Register = ({themeMode}) => {
+export default function Register ({themeMode}) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,12 +21,13 @@ const Register = ({themeMode}) => {
         const res = await fetch("http://localhost:3000/users/register", options);
 
         if (res.status === 201) {
-            alert(`User ${newUser.username} has been created.`)
+            // alert(`User ${newUser.username} has been created.`)
             window.location.assign('/login');
-        } else {
-            alert("Could not create user")
-        }
+        // } else {
+        //     // alert("Could not create user")
+        // }
     }
+}
 
     const paperStyle={
         padding: '20px 20px 60px 20px',
@@ -125,4 +126,3 @@ const Register = ({themeMode}) => {
     )
 }
 
-export default Register;
