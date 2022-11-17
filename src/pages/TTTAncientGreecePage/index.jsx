@@ -369,7 +369,6 @@ export default function TTTAncientGreecePage() {
         marginTop: 20,
       }}
     >
-      <audio src="/TTTAncientGreece/game_music.mp3" autoplay controls/>
       {console.log(currentScene)}
       {currentScene == 9 ? 
       <TTTAncientGreeceEndScene></TTTAncientGreeceEndScene> :
