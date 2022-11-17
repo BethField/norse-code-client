@@ -64,7 +64,7 @@ export default function TTTDialogueBox({
           {questionAnswered ? dialogueFinal : dialogue}
         </p> */}
         <TypeWriterEffect
-                            key={Math.floor(Math.random() * 2000000000)} 
+                            key={Math.floor(Math.random() * 9000000000)} 
                             textStyle={{ fontFamily: '"Roboto","Helvetica","Arial",sans-serif;', fontSize: '1.5rem', fontWeight: 300 }}
                             startDelay={50}
                             cursorColor="black"
