@@ -70,7 +70,7 @@ export default function TTTAncientGreecePage() {
         //   answer: "Chitons"
         // },
         info: {
-          text: "In ancient Greece, both men and women often wore a garment called a chiton which was draped over one or both shoulders. Greek men often wore a chiton draped over their left shoulder for horse-riding. Greek women often wore a longer, belted chiton over a different garment called a peplos",
+          text: "In ancient Greece, men often wore a knee-length garment called a chiton which was draped over one or both shoulders. Women often wore a longer, belted chiton over a different garment called a peplos",
           img: "/TTTAncientGreece/infoPopups/clothes.png",
         },
       },
@@ -90,7 +90,7 @@ export default function TTTAncientGreecePage() {
           name: "food market",
           unHoveredImage: "/TTTAncientGreece/foodSign.png",
           hoveredImage: "/TTTAncientGreece/foodSignSelected.png",
-          position: [300, 250]
+          position: [300, 250],
         },
         // questionInfo: {
         //   question: "What is the name of the clothes worn in Ancient Greece?",
@@ -159,7 +159,7 @@ export default function TTTAncientGreecePage() {
         //   answer: "Chitons"
         // },
         info: {
-          text: "Finding a great meal in ancient Greece would have been very easy. They ate a variety of delicious dishes, some of which are still around today. Most Greeks were farmers and they ate the food that they grew. Their diet was made up of mostly bread, grains, olives, fruit, vegetables, chickpeas and fish. They also ate boiled dandelions and even stinging nettles!",
+          text: "The Ancient Greeks ate a variety of delicious dishes. Their diet was made up of mostly bread, grains, olives, fruit, vegetables, chickpeas and fish. They also ate boiled dandelions and even stinging nettles!",
           img: "/TTTAncientGreece/infoPopups/food.png",
         },
       },
@@ -219,8 +219,8 @@ export default function TTTAncientGreecePage() {
         requiredItems: [],
         dialogue: {
           initial: [
-            "SHOPKEEPER: Perseus’s mother was stolen by an evil king Polydectes, who said he wouldn’t let her go unless Perseus killed Medusa the Gorgon",
-            "SHOPKEEPER: On his way, Athena and Hermes told Perseus not to look at Medusa or he would turn into stone, and they gave him a reflective shield, a sickle and some flying sandals to help him defeat her",
+            "SHOPKEEPER: Perseus’s mother was stolen by an evil king who wouldn’t let her go unless Perseus killed Medusa, a Gorgon who turned people to stone by looking at them",
+            "SHOPKEEPER: On his way, Perseus was given a reflective shield, a sickle and some flying sandals to help him defeat her. ",
             "SHOPKEEPER: What do you think Perseus did when he got to the cave and saw it was full of people turned to stone?",
           ],
           final: [
@@ -229,7 +229,7 @@ export default function TTTAncientGreecePage() {
         },
         questionScene: true,
         questionInfo: {
-          question: "How did Perseus use his reflective sheild an sickle to defeat Medusa?",
+          question: "How did Perseus use his reflective shield an sickle to defeat Medusa?",
           options: [
             "He covered his eyes with the shield and used the sickle to cut off her arms",
             "He walked backwards using the shield to see her and used the sickle to cut off her head",
@@ -292,7 +292,8 @@ export default function TTTAncientGreecePage() {
         dialogue: {
           initial: [
             "TIM: There's Aristotle, the famous greek philosopher! Maybe he can explain what's going on here",
-            "ARISTOTLE: This place is called an amphitheatre. In ancient Greece we love live theatre. The actors usually wear masks so everyone in the audience can see their emotions. But the actors don't have their masks...can you help them get ready?",
+            "ARISTOTLE: This place is called an amphitheatre. In Ancient Greece we love live theatre.",
+            "ARISTOTLE: The actors usually wear masks so everyone can see their emotions but the actors don't have their masks...can you help them get ready?",
           ],
           final: ["ARISTOTLE: Excellent! Now the play can begin!"],
         },
@@ -302,7 +303,7 @@ export default function TTTAncientGreecePage() {
         //   answer: "Chitons"
         // },
         info: {
-          text: "In ancient greece almost every city had an open-air, semi-circular theatre called an amphitheatre. The actors wore large masks to show emotions. Greek plays were either comedies or tragedies. Tragedies were often about the past, whereas comedies tended to be about current and everyday life.",
+          text: "In ancient greece almost every city had an open-air amphitheatre. The actors wore large masks in plays which were either comedies or tragedies. Tragedies were often about the past and comedies tended to be about everyday life.",
           img: "/TTTAncientGreece/infoPopups/amphitheatre.png",
         },
       },
@@ -331,7 +332,7 @@ export default function TTTAncientGreecePage() {
         requiredItems: ["wine"],
         dialogue: {
           initial: [
-            "TIM: I’ve finally arrived at the parthenon! And there’s the state of the goddess Athena. Help me leave her an offering",
+            "TIM: I’ve finally arrived at The Parthenon! And there’s the statue of the Goddess Athena. Help me leave her an offering",
           ],
           final: [
             "TIM: Good job! I'd better get going. I can't wait to tell everyone at school about ancient Greece!",
@@ -343,7 +344,7 @@ export default function TTTAncientGreecePage() {
         //   answer: "Chitons"
         // },
         info: {
-          text: "Ancient Greek temples were housed statues of the deities and were used to make offerings to the gods and goddesses. People made offerings that consisted of fruits, a basket of beans or grain, or even meat was meat if they were wealthy. They also made a libation, a drink offering made of wine, milk, and honey.",
+          text: "Ancient Greek temples housed statues of the deities and were used to make offerings to the gods and goddesses. People made offerings that consisted of fruit, baskets of grain, or even meat was meat. They also made a libation, a drink offering made of wine, milk, and honey.",
           img: "/TTTAncientGreece/infoPopups/temple.png",
         },
       },
@@ -365,7 +366,7 @@ export default function TTTAncientGreecePage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: 20
+        marginTop: 20,
       }}
     >
       {started ? (
